@@ -1,0 +1,791 @@
+/* ==========================================================================
+   Société des amis d'Henri Irénée Marrou
+   Feuille de style unique. Direction visuelle : maquette A « revue savante ».
+   Ordre : jetons -> base -> en-tête -> accueil -> pages intérieures -> divers
+   -> media queries. Aucune surcharge !important, aucune hauteur fixe.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Jetons
+   -------------------------------------------------------------------------- */
+:root {
+  --ivoire:        #faf6ec;
+  --ivoire-fonce:  #f2ece0;
+  --ivoire-carte:  #fdfbf5;
+  --bordeaux:      #6d1220;
+  --bordeaux-vif:  #8a1c2c;
+  --mauve:         #8d7fae;
+  --mauve-clair:   #b9aed0;
+  --encre:         #241f1c;
+  --encre-douce:   #5b534d;
+  --filet:         #ddd3c2;
+
+  --serif:  "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans:   "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --page:      82rem;   /* largeur maximale du contenu */
+  --gouttiere: clamp(1.25rem, 4vw, 3.5rem);
+
+  --ombre-douce: 0 1px 2px rgba(36, 31, 28, .05), 0 8px 24px rgba(36, 31, 28, .06);
+}
+
+/* --------------------------------------------------------------------------
+   2. Base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+
+  /* La place de la barre de défilement est réservée même quand la page n'en a
+     pas besoin. Sans cela, l'accueil (qui tient sur un écran, donc sans barre)
+     est 15 px plus large que les pages intérieures, et toute la barre de
+     navigation se décale en changeant de page. Vaut aussi à l'ouverture de la
+     recherche, qui bloque le défilement. */
+  scrollbar-gutter: stable;
+}
+
+/* Navigateurs sans scrollbar-gutter : on force la barre à rester affichée,
+   ce qui produit le même résultat, en un peu moins discret. */
+@supports not (scrollbar-gutter: stable) {
+  html { overflow-y: scroll; }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ivoire);
+  color: var(--encre);
+  font-family: var(--sans);
+  font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body > main { flex: 1 0 auto; }
+
+img { max-width: 100%; display: block; }
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.12;
+  margin: 0;
+  color: var(--bordeaux);
+}
+
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--bordeaux); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--bordeaux-vif); }
+
+:focus-visible {
+  outline: 2px solid var(--bordeaux);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+cite { font-style: italic; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute; left: 0.5rem; top: -4rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--bordeaux); color: #fff;
+  text-decoration: none;
+  transition: top .15s;
+}
+.skip-link:focus { top: 0.5rem; color: #fff; }
+
+/* Boutons ----------------------------------------------------------------- */
+.button {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.7rem 1.4rem;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  letter-spacing: .01em;
+  text-decoration: none;
+  border: 1px solid var(--bordeaux);
+  transition: background-color .18s, color .18s;
+}
+.button--primary { background: var(--bordeaux); color: var(--ivoire); }
+.button--primary:hover { background: var(--bordeaux-vif); color: var(--ivoire); }
+.button--outline { background: transparent; color: var(--bordeaux); }
+.button--outline:hover { background: var(--bordeaux); color: var(--ivoire); }
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--bordeaux);
+  margin: 0 0 .35rem;
+}
+
+.rule {
+  display: block; width: 3.5rem; height: 1px;
+  background: var(--bordeaux); opacity: .5;
+  margin: 1.1rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. En-tête
+   -------------------------------------------------------------------------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(0.35rem, 1vh, 0.85rem) var(--gouttiere);
+  background: var(--ivoire);
+  border-bottom: 1px solid var(--filet);
+  position: relative;   /* jamais fixed : pas de recouvrement au zoom */
+  z-index: 10;
+}
+
+.brand {
+  display: flex; align-items: center;
+  gap: 0.85rem;
+  text-decoration: none; color: inherit;
+  flex: 0 1 auto;
+}
+
+/* Même taille sur toutes les pages : un en-tête qui rétrécit en changeant de
+   page se remarque immédiatement et donne une impression d'instabilité. */
+.brand__mark {
+  display: block;
+  width: clamp(3.2rem, min(6.6vw, 13vh), 6.4rem);
+  height: auto;
+  flex: none;
+}
+
+.brand__name {
+  font-family: var(--serif);
+  font-size: clamp(0.95rem, min(0.9rem + 0.55vw, 2.7vh), 1.55rem);
+  line-height: 1.15;
+  color: var(--encre);
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(0.9rem, 2vw, 2rem);
+  margin-left: auto;
+}
+.main-nav a {
+  font-family: var(--serif);
+  font-size: clamp(1rem, 0.9rem + 0.3vw, 1.25rem);
+  color: var(--encre);
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  white-space: nowrap;
+}
+.main-nav a:hover { color: var(--bordeaux); border-bottom-color: var(--mauve); }
+
+/* Rubrique courante : le visiteur doit savoir où il se trouve */
+.main-nav a[aria-current] {
+  color: var(--bordeaux);
+  border-bottom-color: var(--bordeaux);
+  border-bottom-width: 2px;
+  padding-bottom: 2px;
+}
+
+.search-button {
+  flex: none;
+  display: grid; place-items: center;
+  width: 2.5rem; height: 2.5rem;
+  background: none; border: 0; cursor: pointer;
+  color: var(--encre);
+}
+.search-button svg {
+  width: 1.35rem; height: 1.35rem;
+  fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round;
+}
+.search-button:hover { color: var(--bordeaux); }
+
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  width: 2.75rem; height: 2.5rem;
+  background: none; border: 1px solid var(--filet); cursor: pointer;
+  padding: 0.6rem 0.65rem;
+  flex-direction: column; justify-content: space-between;
+}
+.nav-toggle span:not(.sr-only) { display: block; height: 1.5px; background: var(--encre); }
+
+/* --------------------------------------------------------------------------
+   4. Accueil (table des matières)
+   -------------------------------------------------------------------------- */
+.portal__hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+  border-bottom: 1px solid var(--filet);
+}
+
+/* Le bloc d'identité est calé à gauche sur la gouttière, sans marge flottante :
+   il reste aligné sur l'en-tête quel que soit le niveau de zoom.
+   Toutes les tailles sont bornées par la hauteur d'écran (vh) autant que par
+   la largeur (vw), afin que l'accueil se comprime au lieu de déborder. */
+.portal__identity {
+  padding: clamp(0.6rem, 2.6vh, 3.5rem) var(--gouttiere);
+  display: flex; flex-direction: column; justify-content: center;
+  max-width: 46rem;
+  width: 100%;
+}
+
+.portal__identity h1 {
+  font-size: clamp(1.9rem, min(1.4rem + 3.2vw, 7.6vh), 4.6rem);
+  letter-spacing: -0.015em;
+}
+
+.portal__subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, min(1rem + 1.3vw, 4.2vh), 2.35rem);
+  line-height: 1.3;
+  color: var(--encre);
+  margin: 0.15em 0 0;
+}
+
+.portal__identity > p:not(.portal__subtitle):not(.eyebrow) {
+  color: var(--encre-douce);
+  max-width: 46ch;
+  font-size: clamp(0.88rem, min(1.02rem, 2.5vh), 1.02rem);
+  margin-bottom: clamp(0.3rem, 1.2vh, 1em);
+}
+
+.portal__identity .rule { margin: clamp(0.35rem, 1.2vh, 1.1rem) 0; }
+
+.portal__identity .button {
+  align-self: flex-start;
+  margin-top: clamp(0.55rem, 1.8vh, 1.4rem);
+  padding-block: clamp(0.35rem, 1.4vh, 0.7rem);
+}
+
+/* Le portrait est posé en absolu dans un cadre.
+   C'est indispensable, pas décoratif : une <img> en flux impose au héros une
+   hauteur minimale déduite de sa largeur et de son rapport d'image. Sur une
+   fenêtre large et courte — le cas normal, une fois retirées les barres du
+   navigateur — cela suffisait à faire déborder l'accueil, d'autant plus que
+   l'écran était large. En absolu, l'image ne pèse plus rien dans le calcul. */
+.portal__portrait {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(14rem, 36vh, 28rem);
+  background: var(--ivoire-fonce);
+}
+.portal__portrait img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 26%;
+}
+
+/* Sommaire des chapitres */
+.portal__chapters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));  /* 6 rubriques = 2 rangées pleines */
+  border-bottom: 1px solid var(--filet);
+}
+
+.portal__chapters a {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: clamp(0.35rem, 1.25vh, 1.5rem) clamp(1.1rem, 1.8vw, 1.7rem);
+  text-decoration: none;
+  color: var(--encre);
+  border-right: 1px solid var(--filet);
+  border-bottom: 1px solid var(--filet);
+  transition: background-color .18s;
+}
+.portal__chapters a:hover { background: var(--ivoire-carte); }
+
+.portal__chapters svg {
+  flex: none;
+  width: clamp(1.4rem, min(1.9rem, 3.4vh), 1.9rem);
+  height: clamp(1.4rem, min(1.9rem, 3.4vh), 1.9rem);
+  fill: none; stroke: var(--mauve); stroke-width: 2.4;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.portal__chapters span { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.portal__chapters strong {
+  font-family: var(--serif); font-weight: 600;
+  font-size: clamp(1rem, min(1.2rem, 2.7vh), 1.2rem);
+  color: var(--bordeaux); line-height: 1.2;
+}
+.portal__chapters small {
+  color: var(--encre-douce); line-height: 1.35;
+  font-size: clamp(0.78rem, min(0.85rem, 2vh), 0.85rem);
+}
+.portal__chapters b {
+  margin-left: auto; align-self: flex-start;
+  font-family: var(--serif); font-weight: 500;
+  font-size: 0.95rem; color: var(--mauve-clair);
+}
+
+/* Bandeau citation + liens transversaux */
+.portal__utility {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: clamp(1rem, 2.4vw, 3rem);
+  align-items: center;
+  padding: clamp(0.45rem, 1.5vh, 2rem) var(--gouttiere);
+  background: var(--ivoire-fonce);
+}
+
+.portal__utility blockquote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(0.9rem, min(1rem + 0.6vw, 2.3vh), 1.55rem);
+  line-height: 1.4;
+  color: var(--encre);
+  margin: 0;
+  max-width: 55ch;
+}
+
+.portal__utility > div {
+  display: flex; flex-wrap: wrap; gap: 0.35rem clamp(0.6rem, 1.3vw, 1.5rem);
+  justify-content: flex-end;
+}
+.portal__utility a {
+  font-family: var(--serif);
+  font-size: clamp(0.95rem, min(1.1rem, 2.4vh), 1.1rem);
+  text-decoration: none;
+  border-bottom: 1px solid var(--mauve-clair);
+  padding-bottom: 2px;
+  white-space: nowrap;
+}
+.portal__utility a:hover { border-bottom-color: var(--bordeaux); }
+
+/* --------------------------------------------------------------------------
+   5. Pages intérieures
+   -------------------------------------------------------------------------- */
+.page-panel {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 1.25rem var(--gouttiere) clamp(3rem, 8vh, 5rem);
+}
+
+/* Retour : dans le flux, en haut à gauche, jamais superposé */
+.back-to-portal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 clamp(1.25rem, 3vh, 2rem);
+  padding: 0.4rem 0.9rem 0.4rem 0.7rem;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  letter-spacing: .04em;
+  color: var(--bordeaux);
+  text-decoration: none;
+  border: 1px solid var(--filet);
+  background: var(--ivoire-carte);
+  border-radius: 2px;
+  transition: background-color .18s, border-color .18s;
+}
+.back-to-portal:hover { background: var(--ivoire-fonce); border-color: var(--mauve-clair); }
+.back-to-portal span { font-size: 1.05em; line-height: 1; }
+
+.chapter-hero {
+  padding-bottom: clamp(1.5rem, 4vh, 2.5rem);
+  margin-bottom: clamp(1.75rem, 4vh, 2.75rem);
+  border-bottom: 1px solid var(--filet);
+}
+.chapter-hero h1,
+.chapter-hero > p { max-width: 46rem; }   /* justesse de lecture, filet pleine largeur */
+.chapter-number {
+  font-size: 0.8rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--mauve); margin: 0 0 .5rem;
+}
+.chapter-hero h1 { font-size: clamp(2.1rem, 1.4rem + 2.4vw, 3.6rem); }
+.chapter-hero > p:last-child {
+  margin: 0.75rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 1rem + 0.5vw, 1.5rem);
+  font-style: italic;
+  color: var(--encre-douce);
+}
+
+/* Corps de page : colonne de lecture + rail ------------------------------- */
+/* La colonne de texte est souple et le rail fixe : le rail se cale ainsi sur
+   le bord droit au lieu de flotter au milieu, et toute la place gagnée va au
+   texte. Celui-ci reste borné à 46rem — au-delà d'environ 90 signes par ligne,
+   l'œil perd la ligne en revenant à la marge. */
+.chapter-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 15rem);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+.chapter-body .prose { max-width: 46rem; }   /* même mesure que le chapeau */
+
+.page-rail {
+  position: sticky;
+  top: 1.5rem;         /* l'en-tête n'est pas fixe : rien ne peut le recouvrir */
+  font-size: 0.9rem;
+}
+.page-rail nav + nav { margin-top: 1.75rem; }
+.page-rail__titre {
+  font-size: 0.72rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--mauve);
+  margin: 0 0 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--filet);
+}
+.page-rail ul { list-style: none; margin: 0; padding: 0; }
+.page-rail li { margin-bottom: 0.45rem; }
+.page-rail a {
+  display: block;
+  color: var(--encre-douce);
+  text-decoration: none;
+  line-height: 1.35;
+  padding-left: 0.7rem;
+  border-left: 2px solid transparent;
+}
+.page-rail a:hover { color: var(--bordeaux); border-left-color: var(--mauve-clair); }
+.page-rail a[aria-current] {
+  color: var(--bordeaux);
+  font-weight: 600;
+  border-left-color: var(--bordeaux);
+}
+
+/* Texte long -------------------------------------------------------------- */
+.prose { max-width: 40rem; }
+.prose h2 {
+  font-size: clamp(1.4rem, 1.15rem + 0.9vw, 1.95rem);
+  margin: 2.2em 0 0.6rem;
+}
+.prose > :first-child { margin-top: 0; }
+
+.prose p,
+.prose li {
+  color: var(--encre-douce);
+  text-align: justify;
+  /* Indispensable avec la justification : sans coupure, le français aligné
+     des deux côtés creuse des blancs entre les mots et fait apparaître des
+     « rivières ». La césure s'appuie sur le lang="fr" de la page. */
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;   /* pas de coupure sur les mots courts */
+}
+.prose em { font-style: italic; }
+.prose blockquote {
+  margin: 1.6em 0;
+  padding: 0.2rem 0 0.2rem 1.3rem;
+  border-left: 2px solid var(--mauve-clair);
+}
+.prose blockquote p {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--encre);
+}
+.prose ul {
+  margin: 1.2em 0;
+  padding-left: 1.1rem;
+  color: var(--encre-douce);
+}
+.prose li { margin-bottom: 0.6em; }
+.prose li::marker { color: var(--mauve); }
+.prose .notice {
+  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  border-left: 2px solid var(--mauve-clair);
+  background: var(--ivoire-fonce);
+  color: var(--encre-douce);
+}
+
+/* Proposer une correction : discret, mais présent sur chaque page --------- */
+.page-correction {
+  margin: clamp(2rem, 5vh, 3rem) 0 0;
+  font-size: 0.88rem;
+}
+.page-correction a {
+  color: var(--encre-douce);
+  text-decoration: none;
+  border-bottom: 1px solid var(--filet);
+  padding-bottom: 2px;
+}
+.page-correction a:hover { color: var(--bordeaux); border-bottom-color: var(--bordeaux); }
+
+/* Enchaînement : page précédente / suivante en fin de chapitre ------------- */
+.chapter-nav {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+  padding-top: clamp(1.25rem, 3vh, 2rem);
+  border-top: 1px solid var(--filet);
+}
+.chapter-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: clamp(0.8rem, 2vw, 1.15rem);
+  border: 1px solid var(--filet);
+  background: var(--ivoire-carte);
+  text-decoration: none;
+  color: var(--encre);
+  transition: border-color .18s, box-shadow .18s;
+}
+.chapter-nav a:hover { border-color: var(--mauve-clair); box-shadow: var(--ombre-douce); }
+.chapter-nav__next { justify-content: flex-end; text-align: right; }
+.chapter-nav a > span:not([aria-hidden]) { display: flex; flex-direction: column; min-width: 0; }
+.chapter-nav small {
+  font-size: 0.75rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--mauve);
+}
+.chapter-nav strong {
+  font-family: var(--serif); font-weight: 600;
+  font-size: 1.15rem; color: var(--bordeaux); line-height: 1.25;
+}
+.chapter-nav [aria-hidden] { color: var(--mauve); font-size: 1.2rem; flex: none; }
+
+/* Grilles de cartes */
+.chapter-content--cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(17rem, 100%), 1fr));
+  gap: clamp(0.9rem, 2vw, 1.5rem);
+}
+.chapter-content--cards a {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  padding: clamp(1.1rem, 2.5vw, 1.6rem);
+  background: var(--ivoire-carte);
+  border: 1px solid var(--filet);
+  text-decoration: none;
+  transition: border-color .18s, box-shadow .18s, transform .18s;
+}
+.chapter-content--cards a:hover {
+  border-color: var(--mauve-clair);
+  box-shadow: var(--ombre-douce);
+  transform: translateY(-2px);
+}
+.chapter-content--cards strong {
+  font-family: var(--serif); font-weight: 600;
+  font-size: 1.3rem; color: var(--bordeaux); line-height: 1.2;
+}
+.chapter-content--cards span { color: var(--encre-douce); font-size: 0.94rem; }
+
+/* Carte dont la page attend encore son texte : annoncé, pas caché */
+.card-flag {
+  align-self: flex-start;
+  margin-top: 0.35rem;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--encre-douce);
+  background: var(--ivoire-fonce);
+  border: 1px solid var(--filet);
+}
+
+.association-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+/* --------------------------------------------------------------------------
+   6. Recherche modale
+   -------------------------------------------------------------------------- */
+.search-dialog {
+  width: min(38rem, calc(100vw - 2rem));
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid var(--filet);
+  background: var(--ivoire);
+  color: var(--encre);
+}
+.search-dialog::backdrop { background: rgba(36, 31, 28, .45); }
+.search-dialog__top {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1.1rem;
+}
+.search-dialog__top strong { font-family: var(--serif); font-size: 1.4rem; color: var(--bordeaux); }
+.search-dialog__top button {
+  background: none; border: 0; font-size: 1.6rem; line-height: 1;
+  cursor: pointer; color: var(--encre-douce);
+}
+.search-dialog label { display: block; font-size: 0.88rem; color: var(--encre-douce); margin-bottom: 0.5rem; }
+.search-dialog form > div { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+.search-results {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  max-height: min(24rem, 45vh);
+  overflow-y: auto;   /* seule zone défilante du site, et elle est prévue pour */
+}
+.search-results li + li { border-top: 1px solid var(--filet); }
+.search-results a {
+  display: flex; flex-direction: column; gap: 0.15rem;
+  padding: 0.8rem 0.6rem;
+  text-decoration: none;
+  color: var(--encre);
+}
+.search-results a:hover, .search-results a:focus-visible { background: var(--ivoire-fonce); }
+.search-results strong {
+  font-family: var(--serif); font-weight: 600;
+  font-size: 1.15rem; color: var(--bordeaux); line-height: 1.25;
+}
+.search-results small {
+  font-size: 0.72rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--mauve);
+}
+.search-results span { font-size: 0.88rem; color: var(--encre-douce); line-height: 1.45; }
+.search-results mark {
+  background: var(--mauve-clair);
+  color: var(--encre);
+  padding: 0 1px;
+}
+
+/* --------------------------------------------------------------------------
+   7. Pied de page (absent de l'accueil, qui tient sur un écran)
+   -------------------------------------------------------------------------- */
+.site-footer {
+  margin-top: auto;
+  padding: clamp(2rem, 5vh, 3.5rem) var(--gouttiere) clamp(1.75rem, 4vh, 2.75rem);
+  background: var(--ivoire-fonce);
+  border-top: 1px solid var(--filet);
+  font-size: 0.92rem;
+  color: var(--encre-douce);
+}
+.site-footer__grid {
+  max-width: var(--page);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+.site-footer__nom {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--bordeaux);
+  margin-bottom: 0.5rem;
+}
+.site-footer__titre {
+  font-size: 0.78rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--mauve);
+  margin-bottom: 0.6rem;
+}
+.site-footer ul { list-style: none; margin: 0; padding: 0; }
+.site-footer li { margin-bottom: 0.35rem; }
+.site-footer a { color: var(--encre); text-decoration: none; border-bottom: 1px solid var(--filet); }
+.site-footer a:hover { color: var(--bordeaux); border-bottom-color: var(--bordeaux); }
+
+/* --------------------------------------------------------------------------
+   7. Adaptation aux tailles d'écran
+   Principe : on ne fait que repasser en colonne unique.
+   Aucune hauteur fixe, aucun masquage de contenu.
+   -------------------------------------------------------------------------- */
+
+/* Bureau : l'accueil tient sur une page, y compris zoomé.
+   Le héros occupe la place restante (1fr) mais ne descend jamais sous son
+   contenu (min-content) : si l'espace manque vraiment, la page défile
+   normalement au lieu de masquer quoi que ce soit. Combiné aux tailles
+   bornées en vh ci-dessus, l'accueil tient sans défilement jusqu'à 150 %
+   de zoom environ ; au-delà, il défile. */
+@media (min-width: 50rem) and (min-height: 30rem) {
+  body.page-accueil > main { flex: 1 1 auto; display: flex; }
+  body.page-accueil .portal {
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-rows: minmax(min-content, 1fr) min-content min-content;
+  }
+  body.page-accueil .portal__portrait { min-height: 0; }
+}
+
+/* Barre de navigation : repliée dès qu'elle ne tient plus en une ligne.
+   Seuil mesuré : en dessous, les 7 rubriques passaient sur deux lignes, ce qui
+   doublait la hauteur de l'en-tête et faisait déborder l'accueil. Relevé de
+   71 à 78rem après l'agrandissement de l'ex-libris, qui prend plus de largeur. */
+@media (max-width: 78rem) {
+  .nav-toggle { display: flex; }
+  .search-button { order: 3; }
+  .main-nav {
+    display: none;
+    order: 4;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+    margin: 0.75rem 0 0;
+    border-top: 1px solid var(--filet);
+    padding-top: 0.75rem;
+  }
+  .main-nav[data-open="true"] { display: flex; }
+  .main-nav a { padding: 0.5rem 0; font-size: 1.2rem; }
+}
+
+/* Mise en page : colonne unique en dessous du seuil « une page » (60rem),
+   pour ne jamais empiéter sur le mode plein écran de l'accueil. */
+@media (max-width: 49.99rem) {
+  .portal__hero { grid-template-columns: minmax(0, 1fr); }
+  .portal__identity { max-width: none; order: 2; }
+  /* En colonne, le portrait ne doit jamais occuper l'écran à lui seul :
+     le titre reste visible sans défiler, même à très fort zoom. */
+  .portal__portrait { order: 1; max-height: min(22rem, 42vh); min-height: 8rem; }
+
+  #decouvrir .chapter-content,
+  .resource-panel,
+  .association-panel,
+  .portal__utility { grid-template-columns: minmax(0, 1fr); }
+
+  .portal__utility > div { justify-content: flex-start; }
+
+  .portal__chapters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Faute de place à côté, le rail se dissout et ses deux blocs se replacent
+   là où ils servent : le sommaire de la page avant le texte, les pages
+   voisines après — et non l'inverse, qui repoussait l'article très bas. */
+@media (max-width: 71rem) {
+  .chapter-body { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .page-rail { display: contents; }
+  .page-rail__toc,
+  .page-rail__voisines {
+    padding: 1rem 1.15rem;
+    background: var(--ivoire-carte);
+    border: 1px solid var(--filet);
+  }
+  .page-rail__toc { order: -1; }
+  .page-rail__voisines { order: 1; }
+}
+
+@media (max-width: 40rem) {
+  /* Sur une colonne étroite, la justification écarte trop les mots : on
+     revient au drapeau, en gardant la césure qui adoucit la marge droite. */
+  .prose p,
+  .prose li { text-align: left; }
+
+  /* Le nom peut se comprimer pour que menu et loupe restent dans l'écran */
+  .site-header { gap: 0.5rem; }
+  .brand { flex: 0 1 auto; min-width: 0; }
+  .brand__name { font-size: 1rem; }
+  .brand__mark { width: 2.4rem; }
+  .nav-toggle { width: 2.5rem; }
+  .search-button { width: 2.25rem; }
+
+  .portal__chapters { grid-template-columns: minmax(0, 1fr); }
+  .portal__chapters a { border-right: 0; }
+  .cahiers-grid article { grid-template-columns: minmax(0, 1fr); }
+  .cahier-cover { max-width: 9rem; }
+  .chapter-timeline li { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
+  .association-actions { align-self: stretch; }
+  .association-actions .button { width: 100%; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none; animation: none; }
+}

@@ -1,0 +1,127 @@
+# Configuration de l'interface d'administration.
+#
+# À COMPLÉTER AVANT LA MISE EN LIGNE : remplacer « VOTRE-COMPTE/VOTRE-DEPOT »
+# ci-dessous par le dépôt réel. Tant que ce n'est pas fait, l'interface ne peut
+# pas se connecter. Voir ADMINISTRATION.md à la racine du projet.
+
+backend:
+  name: github
+  repo: VOTRE-COMPTE/VOTRE-DEPOT
+  branch: main
+  # Relais d'authentification : voir ADMINISTRATION.md, étape 3.
+  base_url: https://VOTRE-RELAIS.workers.dev
+
+# Flux éditorial : les modifications passent par un état « en relecture »
+# avant publication. C'est ce qui distingue un membre d'un administrateur.
+publish_mode: editorial_workflow
+
+# Les images et PDF téléversés atterrissent ici.
+media_folder: site/assets/images
+public_folder: /assets/images
+
+locale: fr
+
+# Langue de l'interface et libellés
+site_url: https://www.henrimarrou.org
+display_url: https://www.henrimarrou.org
+logo_url: /assets/images/ex-libris.png
+
+collections:
+  # --- Pages de contenu : ce que l'on modifie le plus souvent --------------
+  - name: pages
+    label: Pages
+    label_singular: page
+    folder: contenu/pages
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    slug: '{{fields.titre | slugify}}'
+    identifier_field: titre
+    summary: '{{titre}}  ·  {{rubrique}}'
+    sortable_fields: [titre, rubrique, ordre]
+    fields:
+      - { name: titre, label: Titre de la page, widget: string }
+      - name: rubrique
+        label: Rubrique
+        widget: select
+        options:
+          - { label: Découvrir, value: decouvrir }
+          - { label: L’historien, value: historien }
+          - { label: Penser et agir, value: penser-agir }
+          - { label: Le musicologue, value: musicologue }
+          - { label: Ressources, value: ressources }
+          - { label: Cahiers Marrou, value: cahiers }
+          - { label: L’Association, value: association }
+      - { name: ordre, label: Position dans la rubrique, widget: number,
+          value_type: int, min: 1, default: 1 }
+      - { name: chapeau, label: Chapeau (phrase sous le titre), widget: text }
+      - { name: resume, label: Résumé (texte de la carte dans la rubrique),
+          widget: text }
+      - { name: description, label: Description pour les moteurs de recherche,
+          widget: text, required: false,
+          hint: 'Une ou deux phrases. À défaut, le chapeau est utilisé.' }
+      - { name: body, label: Texte de la page, widget: markdown }
+
+  # --- Rubriques : les 7 grandes sections ---------------------------------
+  - name: rubriques
+    label: Rubriques
+    label_singular: rubrique
+    folder: contenu/rubriques
+    create: false          # créer une rubrique demande aussi une icône : à faire à la main
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: titre
+    summary: '{{nav}}  ·  {{titre}}'
+    fields:
+      - { name: titre, label: Titre affiché sur la page, widget: string }
+      - { name: nav, label: Libellé court (barre de navigation), widget: string }
+      - { name: surtitre, label: Surtitre (ex. « Chapitre 02 »), widget: string }
+      - { name: chapeau, label: Chapeau, widget: text }
+      - { name: resume, label: Résumé (carte sur l’accueil), widget: text }
+      - { name: description, label: Description pour les moteurs de recherche,
+          widget: text, required: false }
+      - { name: ordre, label: Position dans la navigation, widget: number,
+          value_type: int, min: 1 }
+      - { name: sommaire, label: Afficher une carte sur l’accueil,
+          widget: boolean, default: true }
+      - { name: grille, label: Cette rubrique affiche la liste de ses pages,
+          widget: boolean, default: false }
+      - { name: icone, label: Icône, widget: select,
+          options: [vie, colonne, livre, lyre, loupe, cahier, personnes] }
+      - { name: body, label: Texte d’introduction (facultatif),
+          widget: markdown, required: false }
+
+  # --- Réglages ------------------------------------------------------------
+  - name: reglages
+    label: Réglages
+    files:
+      - name: accueil
+        label: Page d’accueil
+        file: contenu/accueil.md
+        fields:
+          - { name: titre, label: Nom affiché, widget: string }
+          - { name: sous_titre, label: Sous-titre, widget: string }
+          - { name: dates, label: Dates, widget: string }
+          - { name: chapeau, label: Phrase d’introduction, widget: text }
+          - { name: citation, label: Citation du bandeau, widget: text }
+          - { name: description, label: Description pour les moteurs de recherche,
+              widget: text }
+          - { name: body, label: '', widget: hidden, required: false }
+      - name: site
+        label: Informations générales
+        file: contenu/reglages.md
+        fields:
+          - { name: nom, label: Nom de l’association, widget: string }
+          - { name: titre_court, label: Nom court (onglets du navigateur),
+              widget: string }
+          - { name: url, label: Adresse du site, widget: string }
+          - { name: courriel, label: Adresse de contact, widget: string }
+          - name: transversaux
+            label: Liens du bandeau d’accueil
+            widget: list
+            fields:
+              - { name: libelle, label: Libellé, widget: string }
+              - { name: cible, label: 'Cible (ex. « ressources/les-livres »)',
+                  widget: string }
+          - { name: body, label: '', widget: hidden, required: false }

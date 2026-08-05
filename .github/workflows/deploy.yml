@@ -1,0 +1,59 @@
+# Reconstruit et publie le site à chaque modification du contenu.
+#
+# Déclenché quand l'interface d'administration enregistre une page, ou quand
+# on modifie un fichier à la main. Le site est en ligne une minute plus tard.
+name: Construire et publier
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'contenu/**'
+      - 'statique/**'
+      - 'build/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:      # permet aussi de relancer à la main depuis GitHub
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Une seule publication à la fois ; si deux enregistrements se suivent de près,
+# seule la plus récente est publiée.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  construire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Installer les dépendances
+        run: pip install -r build/requirements.txt
+
+      - name: Construire le site
+        run: python build/build.py
+
+      - name: Vérifier qu'aucun lien n'est cassé
+        run: python build/verifier.py
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  publier:
+    needs: construire
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - id: deploiement
+        uses: actions/deploy-pages@v4

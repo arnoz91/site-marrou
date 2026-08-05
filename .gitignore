@@ -1,0 +1,13 @@
+# Produit par build/build.py — reconstruit à chaque publication
+site/
+
+# Python
+__pycache__/
+*.pyc
+
+# Systeme
+.DS_Store
+Thumbs.db
+
+# Captures de vérification, régénérables
+_captures/
