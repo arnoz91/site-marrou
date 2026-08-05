@@ -376,6 +376,26 @@ def convertir(source, images, titre_page="", corriges=None):
         if a and (a in b or b in a):
             blocs.pop(0)
 
+    # Le HTML archivé imbrique les balises : la découpe rendait parfois la fin
+    # d'un paragraphe une seconde fois, comme bloc autonome. On l'écarte AVANT
+    # d'appliquer les corrections — après, les deux blocs auraient été relus
+    # différemment et l'un ne serait plus contenu dans l'autre.
+    # La comparaison se fait sur le texte nu : le bloc long peut contenir un
+    # lien ou une espace insécable que le bloc court n'a pas, et une égalité
+    # de chaînes brutes ne verrait alors pas l'inclusion.
+    def nu_bloc(t):
+        t = re.sub(r"!?\[([^\]]*)\]\([^)]*\)", r"\1", t)
+        return re.sub(r"[^\w]", "", t).lower()
+
+    longs = sorted((b for b in blocs if len(b) > 80), key=len, reverse=True)
+    nus = {b: nu_bloc(b) for b in longs}
+    inclus = set()
+    for i, grand in enumerate(longs):
+        for petit in longs[i + 1:]:
+            if petit not in inclus and nus[petit] and nus[petit] in nus[grand]:
+                inclus.add(petit)
+    blocs = [b for b in blocs if b not in inclus]
+
     blocs = appliquer_corrections(blocs, corriges)
 
     # Dédoublonnage : consécutif pour les petits blocs, global pour les
