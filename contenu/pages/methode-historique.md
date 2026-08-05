@@ -9,7 +9,7 @@ Très tôt, dans ses cours, articles et comptes rendus Henri Marrou s’est atta
 
 Sa pensée s’élabore de plus en plus largement à partir de 1939 dans :
 
-- *Tristesse de l’historien *( à propos de la thèse de doctorat de Raymond Aron). Esprit, avril 1939, p. 11 - 47.
+- *Tristesse de l’historien * (à propos de la thèse de doctorat de Raymond Aron). Esprit, avril 1939, p. 11 - 47.
 
 - *Bergson et l’histoire*, dans Henri Bergson, 2d. de la Baconnière, 1941, p. 213-221.
 
@@ -23,17 +23,17 @@ Sa pensée s’élabore de plus en plus largement à partir de 1939 dans :
 
 - *Rapport sur : Histoire de la civilisation, I, Antiquité*. Actes du X° Congrès international des Sciences historiques, I, Paris 1950, p. 235-340.
 
-- D’une théorie de la civilisation à la théologie de l’histoire ( sur l’oeuvre d’Arnold J. Toynbee). Esprit, juillet 1952, p. 112-129.
+- D’une théorie de la civilisation à la théologie de l’histoire (sur l’oeuvre d’Arnold J. Toynbee). Esprit, juillet 1952, p. 112-129.
 
 - *Philosophie critique de l’histoire et sens de l’histoire *dans : L’Homme et l’histoire*, * Actes du VI° Congrès des Sociétés de Philosophie de langue française, Strasbourg, 1952, p. 3-10.
 
 - *La Méthodologie historique : orientations actuelles*, à propos d’ouvrages récents. Revue historique, juillet-septembre 1955, p. 256-270.
 
-- *Lettre à M. André Piganiol*( à propos de son article : Qu’est-ce que l’histoire ?). Revue de Métaphysique et de Morale, 1955, p. 248-250.
+- *Lettre à M. André Piganiol* (à propos de son article : Qu’est-ce que l’histoire ?). Revue de Métaphysique et de Morale, 1955, p. 248-250.
 
 - L’Histoire et les historiens, seconde chronique de méthodologie historique. Revue historique, avril-juin 1957, p.270-289
 
-Sa méthodologie historique est exposée dans le livre *De la connaissance historique* ( 1954) : Ce livre a été traduit en cinq langue, et a connu six éditions. Quelques idées-force peuvent en être signalées : l’histoire n’est pas une science objective (prétention des positivistes), ce n’est pas non plus une spéculation sur le devenir de l’humanité ( Hegel ). Œuvre d’un historien, l’histoire est connaissance du passé des hommes par un homme ; elle ne saurait être « objective » mais elle est vraie d’une vérité double, révélant à la fois le passé et l’historien, répondant aux questions que celui-ci a su lui poser. « L’histoire est inséparable de l’historien. » Elle nécessite de lui une vaste culture, lui permettant de comprendre les documents dont il dispose, une vraie humilité et une « sympathie » envers son sujet. La reconstitution du passé ne peut jamais être qu’extrêmement parcellaire, l’existence de structures et la recherche rétrospective de causes nécessitent une grande prudence. La valeur existentielle de l’histoire tient à ce qu’elle élargit l’horizon culturel, enrichit par la résurrection d’autres existences, démontre qu’elles échappent au déterminisme.Nous donnons ici la table des matières analytique des dix chapitres de ce livre, telle que la résume Yves-Marie Hilaire dans *De Renan à Marrou* p. 201-202:
+Sa méthodologie historique est exposée dans le livre *De la connaissance historique* (1954) : Ce livre a été traduit en cinq langue, et a connu six éditions. Quelques idées-force peuvent en être signalées : l’histoire n’est pas une science objective (prétention des positivistes), ce n’est pas non plus une spéculation sur le devenir de l’humanité (Hegel). Œuvre d’un historien, l’histoire est connaissance du passé des hommes par un homme ; elle ne saurait être « objective » mais elle est vraie d’une vérité double, révélant à la fois le passé et l’historien, répondant aux questions que celui-ci a su lui poser. « L’histoire est inséparable de l’historien. » Elle nécessite de lui une vaste culture, lui permettant de comprendre les documents dont il dispose, une vraie humilité et une « sympathie » envers son sujet. La reconstitution du passé ne peut jamais être qu’extrêmement parcellaire, l’existence de structures et la recherche rétrospective de causes nécessitent une grande prudence. La valeur existentielle de l’histoire tient à ce qu’elle élargit l’horizon culturel, enrichit par la résurrection d’autres existences, démontre qu’elles échappent au déterminisme.Nous donnons ici la table des matières analytique des dix chapitres de ce livre, telle que la résume Yves-Marie Hilaire dans *De Renan à Marrou* p. 201-202:
 
 « 1. L’histoire se définit comme la connaissance du passé humain ; une fois connu comme passé, celui-ci est métamorphosé, rendu intelligible, compris.
 
@@ -61,9 +61,9 @@ Principales publications postérieures à De la connaissance historique :
 
 - *La Foi historique*. Les Etudes philosophiques, avril-juin 1959, p. 151-161.
 
-*- Les limites aux apports de l’histoire*, dans Encyclopédie française, t.XX ( 1959), Le Monde en devenir, p20.18.7-16.
+*- Les limites aux apports de l’histoire*, dans Encyclopédie française, t.XX (1959), Le Monde en devenir, p20.18.7-16.
 
-- *Qu’est-ce que l’histoire ?* dans : Ch. Samaran, L’Histoire et ses méthodes, I ( Encyclopédie de la PLéiade, XI),1961, p. 1-33.
+- *Qu’est-ce que l’histoire ?* dans : Ch. Samaran, L’Histoire et ses méthodes, I (Encyclopédie de la PLéiade, XI),1961, p. 1-33.
 
 - *Comment comprendre le métier d’historien ?* Même volume, p. 1465 - 1540.
 

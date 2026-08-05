@@ -1,17 +1,10 @@
 ---
 titre: "L’Association"
-nav: "L’Association"
-surtitre: "Chapitre 06"
 chapeau: "Faire rayonner l’œuvre d’Henri-Irénée Marrou et favoriser l’étude de ses écrits."
-resume: "Actualités, adhésion, contact"
-description: "La Société des amis d’Henri Irénée Marrou (Davenson), association loi 1901 créée en 2007 : but, conseil d’administration, adhésion et contact."
-icone: "personnes"
-ordre: 90
-sommaire: "true"
-grille: "false"
 annexe: true
+ordre: 90
 ---
-**L’Association** dite « Société des amis d’Henri Irénée Marrou ( Davenson) » a été créée en 2007.Elle a pour but : de recueillir les témoignages de l’activité d’Henri Irénée Marrou,
+**L’Association** dite « Société des amis d’Henri Irénée Marrou (Davenson) » a été créée en 2007.Elle a pour but : de recueillir les témoignages de l’activité d’Henri Irénée Marrou,
 
 de favoriser le rayonnement de sa pensée,
 
@@ -97,7 +90,7 @@ Durant l’année 2010-2011, la rubrique « Contact » de notre site Internet 
 
 - Fabien Guilloux, *ofm*, musicologue, depuis longtemps familier des livres et des articles musicologiques de Marrou. Par ailleurs il a découvert dans les *Carnets posthumes* tout un versant franciscain de la spiritualité de Marrou. Il est devenu adhérent de notre association. Nous lui devons une bibliographie complète des articles musicologiques de Marrou (principalement dans *Esprit* et dans *Diapason*), désormais disponible sur le site Internet. Il travaille à une anthologie des écrits musicologiques d’Henri Marrou-Davenson. Expert en traitement de texte, il nous a rendu le service de corriger et de mettre en forme le *Cahier Marrou n°4*. Il assurera la rédaction d’un prochain numéro des *Etudes franciscaines* consacré à Henri Marrou (contenant notamment un *Traité d’esthétique franciscaine* demeuré jusqu’ici inédit).
 
-Stephen Hulliger, le président de l’Association bâloise « Arthur Lourié Gesellschaft » (amie de notre Association) nous a annoncé la première exécution en concert, à Bâle, le 14 novembre 2011, d’une cantate retrouvée et jusqu’ici inconnue et inédite d’Arthur Lourié, *Sibylla dicit* : cette dernière œuvre de Lourié ( 1964) est dédiée à Henri Marrou.
+Stephen Hulliger, le président de l’Association bâloise « Arthur Lourié Gesellschaft » (amie de notre Association) nous a annoncé la première exécution en concert, à Bâle, le 14 novembre 2011, d’une cantate retrouvée et jusqu’ici inconnue et inédite d’Arthur Lourié, *Sibylla dicit* : cette dernière œuvre de Lourié (1964) est dédiée à Henri Marrou.
 
 Le père Olivier-Thomas Vénard de l’École biblique de Jérusalem a retrouvé dans les archives du Cerf et nous a communiqué copie de trois lettres inédites d’Henri Marrou au P. Chifflot des années 1949 – 1950, relatives à l’édition de la Bible de Jérusalem pour laquelle H. Marrou a été largement consulté. L’une de ces lettres compte 12 pages et traite de typographie, de traduction, et**,** longuement**,** de certains commentaires (premier discours de Job, annonce de l’Emmanuel dans Isaïe, Psaumes..)
 
@@ -129,11 +122,11 @@ A la suite de cette remarquable intervention, démonstration rigoureuse et d’u
 
 N.B. Les adhérents peuvent bénéficier d’une réduction de 33% consentie par les Editions du Cerf à notre Association sur les trois ouvrages suivants :
 
-Pierre Riché, *Henri Irénée Marrou historien engagé* ( 2003)
+Pierre Riché, *Henri Irénée Marrou historien engagé* (2003)
 
-Henri Irénée Marrou, *Théologie de l’histoire* ( 2ème édition 2006)
+Henri Irénée Marrou, *Théologie de l’histoire* (2ème édition 2006)
 
-Henri Irénée Marrou, *Carnets posthumes* ( 2006).
+Henri Irénée Marrou, *Carnets posthumes* (2006).
 
 Il leur suffit de commander le ou les ouvrages qui les intéressent auprès de la Trésorière, qui leur en demandera le remboursement, après qu’ils les auront reçus.
 

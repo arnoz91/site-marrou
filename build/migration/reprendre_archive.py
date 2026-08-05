@@ -177,6 +177,9 @@ DESCRIPTIONS = {
                      "pendant la guerre à la chaire de la Sorbonne.",
     "antiquite-tardive": "L’Antiquité tardive, période que Marrou a réhabilitée "
                          "et dont il a imposé le nom, et l’histoire de l’Église.",
+    "saint-augustin": "Saint Augustin et les Pères de l’Église au cœur de "
+                      "l’œuvre d’Henri-Irénée Marrou : sa thèse de 1937 et son "
+                      "histoire du christianisme ancien.",
     "theologie-de-l-histoire-chretien": "Le versant croyant de la réflexion "
                                         "d’Henri-Irénée Marrou sur le sens de l’histoire.",
 }
@@ -225,7 +228,22 @@ def typographie(texte):
     texte = re.sub(r"«[  ]*", "«" + INSECABLE, texte)
     texte = re.sub(r"[  ]*»", INSECABLE + "»", texte)
     texte = re.sub(r"[  ]*([,.])", r"\1", texte)
+    texte = parentheses(texte)
     return re.sub(r"[  ]{2,}(?![;:!?»])", " ", texte)
+
+
+def parentheses(texte):
+    """Normalise les parenthèses, très irrégulières dans la saisie d'origine.
+
+    On y trouvait « ( 1904 – 1925) », « ( comme il aimait le rappeler ) » ou
+    « à Lyon( 1940 ) ». En français la parenthèse est collée à son contenu
+    et précédée d'une espace : « à Lyon (1940) ».
+    """
+    texte = re.sub(r"\([  ]+", "(", texte)              # ( texte -> (texte
+    texte = re.sub(r"[  ]+\)", ")", texte)              # texte ) -> texte)
+    texte = re.sub(r"(?<=[^\s(\[«‘“—–-])\(", " (", texte)      # mot( -> mot (
+    texte = re.sub(r"\)(?=[^\s.,;:!?)\]»…—–-])", ") ", texte)  # )mot -> ) mot
+    return texte
 
 
 def lien_propre(cible):

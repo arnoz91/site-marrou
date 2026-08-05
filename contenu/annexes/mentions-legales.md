@@ -5,9 +5,9 @@ description: "Éditeur, hébergement et droits du site de la Société des amis 
 annexe: true
 ordre: 90
 ---
-**Site de la Société des amis d’Henri Irénée Marrou ( Davenson)
+**Site de la Société des amis d’Henri Irénée Marrou (Davenson)
 
-**(association loi 1901)
+** (association loi 1901)
 
 Siège social : 3 rue Castex – 75004 Paris
 
