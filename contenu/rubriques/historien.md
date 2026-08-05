@@ -1,6 +1,6 @@
 ---
-titre: "L’historien"
-nav: "L’historien"
+titre: "l’Historien"
+nav: "l’Historien"
 surtitre: "Chapitre 01"
 chapeau: "Une œuvre fondatrice sur l’Antiquité tardive, le christianisme ancien et l’éducation."
 resume: "Antiquité tardive, Église, éducation"

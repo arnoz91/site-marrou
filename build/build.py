@@ -87,12 +87,21 @@ def charger():
             )
         page["slug"] = f"{page['rubrique']}/{page['fichier']}"
 
+    dossier_annexes = os.path.join(CONTENU, "annexes")
+    annexes = sorted(
+        (lire_md(os.path.join(dossier_annexes, n))
+         for n in os.listdir(dossier_annexes) if n.endswith(".md")),
+        key=lambda a: a.get("ordre", 99),
+    ) if os.path.isdir(dossier_annexes) else []
+    for annexe in annexes:
+        annexe["slug"] = annexe["fichier"]
+
     doublons = [s for s in {p["fichier"] for p in pages}
                 if [p["fichier"] for p in pages].count(s) > 1]
     if doublons:
         raise SystemExit(f"Noms de page en double : {', '.join(doublons)}")
 
-    return reglages, accueil, rubriques, pages
+    return reglages, accueil, rubriques, pages, annexes
 
 
 # --------------------------------------------------------------------------
@@ -183,6 +192,12 @@ def pied(ctx, depuis):
         f'<li><a href="{vers(r["slug"], depuis)}">{r["nav"]}</a></li>'
         for r in ctx["rubriques"]
     )
+    # Association, Cahiers, Contact et mentions légales : hors du menu
+    # principal, qui ne tiendrait plus sur une ligne, mais accessibles ici.
+    annexes = "".join(
+        f'<li><a href="{vers(a["slug"], depuis)}">{a["titre"]}</a></li>'
+        for a in ctx.get("annexes", [])
+    )
     return f"""    <footer class="site-footer">
       <div class="site-footer__grid">
         <div>
@@ -196,12 +211,8 @@ def pied(ctx, depuis):
           <ul>{rubriques}</ul>
         </nav>
         <div>
-          <p class="site-footer__titre">Soutenir</p>
-          <ul>
-            <li><a href="{vers('association', depuis)}#adherer">Adhérer à la Société</a></li>
-            <li><a href="{vers('cahiers', depuis)}">Lire les Cahiers Marrou</a></li>
-            <li><a href="mailto:{site['courriel']}">Nous écrire</a></li>
-          </ul>
+          <p class="site-footer__titre">L’Association</p>
+          <ul>{annexes}</ul>
         </div>
       </div>
     </footer>"""
@@ -297,7 +308,7 @@ def corps_accueil(ctx):
             <p class="portal__subtitle">{accueil['sous_titre']}</p>
             <span class="rule" aria-hidden="true"></span>
             <p>{accueil['chapeau']}</p>
-            <a class="button button--primary" href="{vers('decouvrir', 'index')}">Découvrir Marrou <span aria-hidden="true">→</span></a>
+            <a class="button button--primary" href="{vers('vie-et-oeuvre/biographie', 'index')}">Découvrir Marrou <span aria-hidden="true">→</span></a>
           </div>
           <div class="portal__portrait">
             <img src="assets/images/marrou-portrait.jpg"
@@ -484,9 +495,9 @@ def ecrire(chemin_relatif, contenu):
 
 
 def main():
-    reglages, accueil, rubriques, pages = charger()
+    reglages, accueil, rubriques, pages, annexes = charger()
     ctx = {"reglages": reglages, "accueil": accueil,
-           "rubriques": rubriques, "pages": pages}
+           "rubriques": rubriques, "pages": pages, "annexes": annexes}
 
     # Reconstruction complète : site/ est jetable et entièrement reproductible.
     shutil.rmtree(SITE_DIR, ignore_errors=True)
@@ -507,15 +518,20 @@ def main():
         "texte": sans_balises(accueil["chapeau"] + " " + accueil["description"]),
     })
 
-    for page in rubriques + pages:
+    for page in rubriques + pages + annexes:
         courant = page.get("rubrique", page["slug"])
-        titre_onglet = f"{sans_balises(page['titre'])} — {reglages['titre_court']}"
+        nom_rubrique = next((r["nav"] for r in rubriques if r["slug"] == courant), "")
+        # Le site d'origine a deux pages du même nom dans deux rubriques :
+        # on distingue l'onglet du navigateur, le titre affiché reste exact.
+        homonymes = [p for p in rubriques + pages + annexes
+                     if sans_balises(p["titre"]) == sans_balises(page["titre"])]
+        precision = (f" ({nom_rubrique})" if len(homonymes) > 1 and nom_rubrique else "")
+        titre_onglet = f"{sans_balises(page['titre'])}{precision} — {reglages['titre_court']}"
         description = page.get("description") or page["chapeau"]
         ecrire(page["slug"] + ".html",
                document(ctx, page["slug"], titre_onglet, description,
                         corps_page(ctx, page), courant))
 
-        nom_rubrique = next((r["nav"] for r in rubriques if r["slug"] == courant), "")
         index.append({
             "url": page["slug"] + ".html",
             "titre": sans_balises(page["titre"]),

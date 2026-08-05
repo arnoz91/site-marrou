@@ -1,30 +1,39 @@
 ---
 titre: "Les livres"
-chapeau: "L’œuvre publiée, de 1934 aux éditions posthumes. Seules les dates des premières éditions sont mentionnées."
+chapeau: "L’œuvre publiée, de 1934 aux éditions posthumes."
 resume: "L’œuvre publiée, de 1934 aux éditions posthumes."
-rubrique: "ressources"
-ordre: 1
+rubrique: "vie-et-oeuvre"
+ordre: 2
 ---
+**
 
-**Les livres** *(ici ne sont mentionnées que les dates des premières éditions)*
+![](/assets/images/archive/FondementCultureChretienne.jpg)
 
-*Fondements d’une culture chrétienne* (signé Henri Davenson) « Cahiers de la nouvelle journée » fasc. n°27, Librairie Bloud et Gay, 1934.
+Les livres **(ici ne sont mentionnées que les dates des premières éditions)
 
-*Saint Augustin et la fin de la culture antique* (Thèse principale de Doctorat d’Etat, signée Henri Irénée Marrou) E. de Boccard éditeur, Paris 1937.
+*Fondements d’une culture chrétienne* (signé Henri Davenson) « Cahiers de la nouvelle journée » fasc. n°27, Librairie Bloud et Gay, 1934.
 
-*ΜΟΥΣΙΚΟΣ ΑΝΗΡ. Étude sur les Scènes de la vie intellectuelle figurant sur les monuments funéraires romains* (Thèse secondaire de Doctorat d’Etat, signée Henri Irénée Marrou) Didier § Richard éditeurs, Grenoble 1938.
+*Saint Augustin et la fin de la culture antique* (Thèse principale de Doctorat d’Etat, signée Henri Irénée Marrou) E. de Boccard éditeur, Paris 1937.
 
-*Traité de la musique selon l’esprit de saint Augustin* (signé Henri Davenson) « Collection des Cahiers du Rhône », Editions de la Baconnière, Neuchâtel 1942.
+*Mousikos anèr. Étude sur les Scènes de la vie intellectuelle figurant sur les monuments funéraires romains* ( Thèse secondaire de Doctorat d’Etat, signée Henri Irénée Marrou) Didier § Richard éditeurs, Grenoble 1938.
 
-*Le Livre des chansons, introduction à la connaissance de la chanson populaire française* (signé Henri Davenson) « Collection des Cahiers du Rhône », Editions de la Baconnière, Neuchâtel 1944.
+*Traité de la musique selon l’esprit de saint Augustin *( signé Henri Davenson) « Collection des Cahiers du Rhône », Editions de la Baconnière, Neuchâtel 1942.
 
-*Histoire de l’éducation dans l’Antiquité* (signé Henri Irénée Marrou, comme tous les livres suivants), Editions du Seuil, 1948.
+*Le Livre des chansons, introduction à la connaissance de la chanson populaire française *( signé Henri Davenson) « Collection des Cahiers du Rhône », Editions de la Baconnière, Neuchatel 1944.
 
-*« À Diognète », Introduction, édition critique, traduction et commentaire* « Collection Sources chrétiennes, n°33 », 1952.
+*Histoire de l’éducation dans l’Antiquité *( signé Henri Irénée Marrou, comme tous les livres suivants ), Editions du Seuil, 1948.
 
-*L’Ambivalence du temps de l’histoire chez saint Augustin*, Institut d’Etudes médiévales de Montréal et Librairie J. Vrin 1950.
+*« À Diognète », Introduction, édition critique, traduction et commentaire *« Collection Sources chrétiennes, n°33 », 1952.
 
-*De la connaissance historique*, Éditions du Seuil, 1954.
+*L’Ambivalence du temps de l’histoire chez saint Augustin*, Institut d’Etudes médiévales de Montréal et Librairie J. Vrin
+
+1950
+
+*
+
+![](/assets/images/archive/HistoireEducationAntiquite.jpg)
+
+De la connaissance historique*, Éditions du Seuil, 1954.
 
 *Saint Augustin et l’Augustinisme*, Éditions du Seuil, collection « Maîtres spirituels », 1955.
 
@@ -34,14 +43,14 @@ ordre: 1
 
 *Théologie de l’histoire*, Éditions du Seuil, 1968.
 
-*Nouvelle Histoire de l’Église*, *t. I, 2ème partie, De la persécution de Dioclétien à la mort de Grégoire le Grand (303-604),* 1970.
+*Nouvelle Histoire de l’Église*,* t.I, 2**ème** partie, De la persécution de Dioclétien à la mort de Grégoire le Grand ( 303-604),* 1970.
 
-*Patristique et Humanisme, Mélanges*, Éditions du Seuil, *Patristica Sorbonensia*, 1976.
+*Patristique et Humanisme, Mélanges *, Éditions du Seuil, *Patristica Sorbonensia*, 1976.
 
-*Décadence romaine ou antiquité tardive ?* Éditions du Seuil, 1977.
+*Décadence romaine ou antiquité tardive ? *Éditions du Seuil, 1977.
 
-*Christiana Tempora*, École française de Rome Palais Farnèse, 1978 (édition posthume).
+*Christiana Tempora*, École française de Rome Palais Farnèse, 1978 ( édition posthume)
 
-*Crise de notre temps et réflexion chrétienne (de 1930 à 1975),* Éditions Beauchesne 1978 (édition posthume).
+*Crise de notre temps et réflexion chrétienne ( de 1930 à 1975),* Éditions Beauchesne 1978 ( édition posthume)
 
-*Carnets posthumes*, Les Éditions du Cerf, 2006 (édition posthume).
+*Carnets posthumes*, Les Éditions du Cerf, 2006 (édition posthume)

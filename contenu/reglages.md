@@ -5,9 +5,9 @@ url: "https://www.henrimarrou.org"
 courriel: "contact@henrimarrou.org"
 transversaux:
   - libelle: "Biographie"
-    cible: "decouvrir"
+    cible: "vie-et-oeuvre/biographie"
   - libelle: "Les livres"
-    cible: "ressources/les-livres"
+    cible: "vie-et-oeuvre/les-livres"
   - libelle: "Nous contacter"
-    cible: "association#contact"
+    cible: "contact"
 ---

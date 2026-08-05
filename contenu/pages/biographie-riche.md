@@ -1,0 +1,15 @@
+---
+titre: "Biographie par Pierre Riché"
+chapeau: "Le portrait qu’en a donné Pierre Riché."
+resume: "Le portrait par Pierre Riché."
+description: "Le portrait d’Henri-Irénée Marrou donné par Pierre Riché dans « Henri Irénée Marrou, historien engagé »."
+rubrique: "apres-marrou"
+ordre: 2
+---
+![](/assets/images/archive/MarrouRiche.jpg)
+
+Pierre Riché. *Henri Marrou historien engagé*. Préface de René Rémond. 417 p.Cerf histoire 2003.
+
+Pierre Riché, l’auteur de cette monographie, est un universitaire éminent, spécialiste bien connu du haut Moyen âge. Il fut un étudiant, un disciple, un collègue et un ami d’Henri Marrou. C’est à ces titres qu’il entreprend, à l’extrême fin du dernier siècle, d’ écrire un livre sur Marrou. En effet, à mesure que le temps passait, les amis, les collègues, voire les disciples, se faisaient plus rares. La tâche, difficile, était nécessaire, rendue possible en relisant l’oeuvre et en faisant appel aux témoignages des enfants, des amis, des disciples de Marrou. Pïerre Riché a mené une enquête très large et fructueuse, les noms de tous ceux qui lui ont répondu figurent en caractères gras dans son Index. Il n’était pas question, écrit-il, d’étudier successivement la vie et l’oeuvre, mais il fallait tenir compte de l’évolution d’une pensée au cours d’engagements successifs. P. Riché mène à bien ce projet ambitieux, en deux parties et neuf chapitres remarquablement bien découpés et conçus, suivis, en conclusion d’un Portrait du maître.
+
+Marrou lui-même est abondamment cité dans le corps du texte, ce qui fait du livre une sorte de « Marrou par lui-même ». En outre P. Riché a choisi de faire figurer en annexes six textes jusqu’alors peu connus de Marrou, révélateurs de ses positions sur des sujets cruciaux ( p. 361 - 404) : son « Discours de rentrée de l’Université de Lyon » en novembre 1942 ; une note confidentielle « à l’équipe des rédacteurs d’Esprit » du printemps 1950 ;deux lettres à Jules Isaac (avril et juin 1949) ; un échange de lettres avec le Cardinal Liénard, de février 1952 ; un article destiné à la *Revue des deux mondes *( janvier 1976) et demeuré inédit, « Actualité des Pères de l’Eglise » ; enfin le texte de sa dernière conférence ( 1976), « Le Problème de la Gnose et les débuts du christianisme ». Une dernière annexe « Cette foi qui rend libre », est un précieux témoignage de Claude Dagens, évêque d’Angoulême ( maintenant de l’Académie Française) dont Henri Marrou patronna, avec Jacques Fontaine, la thèse d’Etat sur Grégoire le Grand.

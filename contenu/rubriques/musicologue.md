@@ -1,8 +1,8 @@
 ---
-titre: "Henri Davenson, musicologue"
+titre: "Le musicologue"
 nav: "Le musicologue"
 surtitre: "Chapitre 03"
-chapeau: "Une autre signature pour penser l’écoute, la tradition et les formes populaires."
+chapeau: "Sous le nom d’Henri Davenson : le traité, la chanson populaire, la critique."
 resume: "Henri Davenson et la musique"
 description: "Sous le nom d’Henri Davenson, Marrou musicologue : le Traité de la musique selon l’esprit de saint Augustin, Le Livre des chansons, la critique musicale."
 icone: "lyre"

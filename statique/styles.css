@@ -503,6 +503,25 @@ cite { font-style: italic; }
 }
 .prose li { margin-bottom: 0.6em; }
 .prose li::marker { color: var(--mauve); }
+/* Images des articles : flottantes à droite comme sur le site d'origine,
+   pour ne pas couper le fil du texte. En dessous de 34rem de colonne, elles
+   repassent en pleine largeur — un flottant y serait illisible. */
+.prose img {
+  float: right;
+  width: min(15rem, 45%);
+  height: auto;
+  margin: 0.3rem 0 1rem 1.6rem;
+  border: 1px solid var(--filet);
+  background: var(--ivoire-carte);
+  padding: 4px;
+}
+.prose p:has(> img:only-child) { text-align: initial; }
+.prose h2 { clear: both; }
+
+@media (max-width: 34rem) {
+  .prose img { float: none; width: 100%; margin: 1rem 0; }
+}
+
 .prose .notice {
   font-size: 0.9rem;
   padding: 0.75rem 1rem;
