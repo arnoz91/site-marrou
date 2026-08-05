@@ -11,6 +11,7 @@ existait déjà : ils ont été relus, et ce ne sont pas des textes d'origine.
 
     python build/migration/reprendre_archive.py
 """
+import difflib
 import html as htmlmod
 import os
 import re
@@ -184,6 +185,40 @@ DESCRIPTIONS = {
                                         "d’Henri-Irénée Marrou sur le sens de l’histoire.",
 }
 
+# Les .docx du dossier de récupération sont une transcription RELUE de
+# l'ancien site : coquilles corrigées (« facisme » -> « fascisme »), espaces
+# parasites supprimées, guillemets français. Là où ils existent, leur texte
+# fait foi ; l'archive fournit en plus les images et les liens, qu'ils ont
+# perdus. Les rubriques « Le chrétien » et « Marrou après Marrou » n'ont pas
+# été transcrites : pour elles, l'archive reste la seule source.
+CORRECTIONS = {
+    "biographie": "SAHIM_SiteInternet_Onglet_Vie et œuvre_Biographie.docx",
+    "les-livres": "SAHIM_SiteInternet_Onglet_Vie et œuvre_Les livres.docx",
+    "bibliographies": "SAHIM_SiteInternet_Onglet_Vie et œuvre_Bibliographie.docx",
+    "articles-divers": "SAHIM_SiteInternet_Onglet_Vie et œuvre_Articles divers/"
+                       "SAHIM_SiteInternet_Onglet_Vie et œuvre_Articles divers.docx",
+    "antiquite-tardive": "SAHIM_SiteInternet_Onglet_l_Historien_Antiquité tardive, histoire de l_Eglise.docx",
+    "saint-augustin": "SAHIM_SiteInternet_Onglet_l_Historien_Saint Augustin et autres Pères de l_Eglise.docx",
+    "archeologie-prosopographie": "SAHIM_SiteInternet_Onglet_l_Historien_Archéologie, prosopographie.docx",
+    "education-culture": "SAHIM_SiteInternet_Onglet_l_Historien_Education, culture.docx",
+    "troubadours": "SAHIM_SiteInternet_Onglet_l_Historien_Les troubadours, l_amour courtois.docx",
+    "le-professeur": "SAHIM_SiteInternet_Onglet_l_Historien_Le professeur.docx",
+    "directeur-de-recherches": "SAHIM_SiteInternet_Onglet_l_Historien_Le directeur de recherches.docx",
+    "methode-historique": "SAHIM_SiteInternet_Onglet_Le théoricien de l_histoire_La méthode historique.docx",
+    "theologie-de-l-histoire": "SAHIM_SiteInternet_Onglet_Le théoricien de l_histoire_Une théologie de l_histoire.docx",
+    "traite-de-la-musique": "SAHIM_SiteInternet_Onglet_Musicologue_TraitéMusique.docx",
+    "chanson-populaire": "SAHIM_SiteInternet_Onglet_Musicologue_ChansonPopulaire.docx",
+    "contributions-musicologiques": "SAHIM_SiteInternet_Onglet_Musicologue_ContributionsMusicologiques.docx",
+    "conferences-musicales": "SAHIM_SiteInternet_Onglet_Musicologue_ConférencesMusicales.docx",
+    "resistance": "SAHIM_SiteInternet_Onglet_Le citoyen_Résistance.docx",
+    "honneur-de-la-france": "SAHIM_SiteInternet_Onglet_Le citoyen_Pour l_honneur de la France.docx",
+    "contre-les-totalitarismes": "SAHIM_SiteInternet_Onglet_Le citoyen_Contre les totalitarismes.docx",
+    "syndicalisme": "SAHIM_SiteInternet_Onglet_Le citoyen_le syndicalisme.docx/"
+                    "SAHIM_SiteInternet_Onglet_Le citoyen_le syndicalisme.docx",
+    "association": "SAHIM_SiteInternet_Page_Association.docx",
+    "cahiers-marrou": "SAHIM_SiteInternet_Page_CahiersMarrou.docx",
+}
+
 # Les PDF déjà rapatriés dans le site
 PDF_LOCAUX = {
     "MarrouCFDTentreFevrier1941e": "marrou-cftc-1941-1943.pdf",
@@ -223,8 +258,9 @@ def typographie(texte):
         texte = texte.replace('"', "")
     texte = re.sub(r"[  ]*([;!?])", INSECABLE + r"\1", texte)
     texte = re.sub(r"(\S)[  ]*:(?!//)",
-                   lambda m: m.group(1) + (":" if m.group(1).isdigit()
-                                           else INSECABLE + ":"), texte)
+                   lambda m: m.group(1) + ":"
+                   if m.group(1).isdigit() and (texte[m.end():m.end()+1] or " ").isdigit()
+                   else m.group(1) + INSECABLE + ":", texte)
     texte = re.sub(r"«[  ]*", "«" + INSECABLE, texte)
     texte = re.sub(r"[  ]*»", INSECABLE + "»", texte)
     texte = re.sub(r"[  ]*([,.])", r"\1", texte)
@@ -307,7 +343,7 @@ def en_ligne(fragment, images):
 INTERTITRE = re.compile(r"^(?:[IVX]+\.\s*)?(.{3,120})$")
 
 
-def convertir(source, images, titre_page=""):
+def convertir(source, images, titre_page="", corriges=None):
     """Transforme le corps archivé d'une page en Markdown."""
     source = re.sub(r"<(script|style)\b.*?</\1>", "", source, flags=re.S | re.I)
     source = re.sub(r"<hr\b[^>]*>", "\n<!--SEP-->\n", source)
@@ -340,13 +376,28 @@ def convertir(source, images, titre_page=""):
         if a and (a in b or b in a):
             blocs.pop(0)
 
-    # dédoublonnage des lignes vides et des séparateurs
-    sortie, precedent = [], None
+    blocs = appliquer_corrections(blocs, corriges)
+
+    # Dédoublonnage : consécutif pour les petits blocs, global pour les
+    # paragraphes longs — la découpe du HTML archivé, aux balises
+    # imbriquées, en rendait parfois un deux fois dans la même page.
+    sortie, precedent, vus = [], None, set()
     for b in blocs:
-        if b != precedent:
+        if b != precedent and not (len(b) > 80 and b in vus):
             sortie.append(b)
+            vus.add(b)
         precedent = b
-    return "\n\n".join(sortie)
+
+    # Le HTML archivé imbrique les balises : la découpe rendait parfois la fin
+    # d'un paragraphe une seconde fois, comme bloc autonome. On écarte tout
+    # bloc entièrement contenu dans un autre.
+    longs = sorted((b for b in sortie if len(b) > 80), key=len, reverse=True)
+    inclus = set()
+    for i, grand in enumerate(longs):
+        for petit in longs[i + 1:]:
+            if petit not in inclus and petit in grand:
+                inclus.add(petit)
+    return "\n\n".join(b for b in sortie if b not in inclus)
 
 
 # --- Écriture ---------------------------------------------------------------
@@ -386,6 +437,75 @@ def lire_archive(nom):
     return open(chemin, encoding="utf-8").read() if os.path.exists(chemin) else ""
 
 
+def paragraphes_corriges(fichier_docx):
+    """Texte relu par l'association, un paragraphe par entrée."""
+    import docx
+    chemin = os.path.join(RACINE, "SAHIM_Site Internet_Récupération")
+    for forme in (fichier_docx, unicodedata.normalize("NFD", fichier_docx)):
+        p = os.path.join(chemin, forme.replace("/", os.sep))
+        if os.path.exists(p):
+            break
+    else:
+        return []
+    chrome = re.compile(r"^(vous êtes ici|haut du formulaire|bas du formulaire|recherche\s*:)", re.I)
+    return [unicodedata.normalize("NFC", par.text).strip()
+            for par in docx.Document(p).paragraphs
+            if par.text.strip() and not chrome.match(par.text.strip())]
+
+
+def appliquer_corrections(blocs, corriges):
+    """Remplace le texte de chaque bloc par sa version relue.
+
+    L'appariement se fait sur le texte nu : la version relue a corrigé des
+    coquilles mais garde l'ordre et la découpe des paragraphes. Les blocs
+    d'image et les blocs sans correspondance nette sont laissés intacts —
+    ce sont eux qui portent ce que les .docx ont perdu.
+    """
+    if not corriges:
+        return blocs
+
+    def nu(t):
+        t = re.sub(r"!?\[[^\]]*\]\([^)]*\)", "", t)
+        return re.sub(r"[^\w]", "", t).lower()
+
+    nus = [nu(c) for c in corriges]
+    sortie, depart = [], 0
+    for bloc in blocs:
+        if bloc.startswith("!["):
+            sortie.append(bloc)
+            continue
+        titre = bloc.startswith("## ")
+        cible = nu(bloc)
+        if len(cible) < 12:
+            sortie.append(bloc)
+            continue
+
+        meilleur, score = None, 0.0
+        # Fenêtre large : la biographie compte 42 paragraphes, et une
+        # fenêtre courte laissait les derniers sans correspondance.
+        # Petite marge en arrière : un bloc de l'archive peut correspondre à
+        # un paragraphe déjà dépassé quand la découpe diffère légèrement.
+        for i in range(max(0, depart - 3), min(depart + 40, len(corriges))):
+            r = difflib.SequenceMatcher(None, cible, nus[i]).ratio()
+            if r > score:
+                meilleur, score = i, r
+        if meilleur is None or score < 0.72:
+            sortie.append(bloc)
+            continue
+
+        remplacement = typographie(corriges[meilleur])
+        # on conserve le balisage du bloc d'origine (titre, citation, puce)
+        if titre:
+            remplacement = "## " + re.sub(r"^[IVX]+\.\s*", "", remplacement)
+        elif bloc.startswith("> "):
+            remplacement = "> " + remplacement
+        elif bloc.startswith("- "):
+            remplacement = "- " + remplacement.lstrip("*• ")
+        sortie.append(remplacement)
+        depart = meilleur + 1
+    return sortie
+
+
 def main():
     images = set()
     os.makedirs(IMAGES, exist_ok=True)
@@ -411,7 +531,9 @@ def main():
             "grille": True,
         })
         ecrire(os.path.join(CONTENU, "rubriques", slug + ".md"), champs,
-               convertir(lire_archive(source), images, titre) if source else "")
+               convertir(lire_archive(source), images, titre,
+                        paragraphes_corriges(CORRECTIONS[slug]) if slug in CORRECTIONS else None)
+               if source else "")
 
     compteur = {}
     for fichier, rubrique, titre, source in PAGES:
@@ -426,7 +548,9 @@ def main():
             "rubrique": rubrique, "ordre": compteur[rubrique],
         })
         ecrire(os.path.join(CONTENU, "pages", fichier + ".md"), champs,
-               convertir(lire_archive(source), images, titre))
+               convertir(lire_archive(source), images, titre,
+                         paragraphes_corriges(CORRECTIONS[fichier])
+                         if fichier in CORRECTIONS else None))
 
     for fichier, titre, source in ANNEXES:
         chapeau, _ = ACCOMPAGNEMENT.get(fichier, ("", ""))
@@ -438,7 +562,9 @@ def main():
             "annexe": True, "ordre": 90,
         })
         ecrire(os.path.join(CONTENU, "annexes", fichier + ".md"), champs,
-               convertir(lire_archive(source), images, titre))
+               convertir(lire_archive(source), images, titre,
+                         paragraphes_corriges(CORRECTIONS[fichier])
+                         if fichier in CORRECTIONS else None))
 
     reportees = 0
     for nom in sorted(images):

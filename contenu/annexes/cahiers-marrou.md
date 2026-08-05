@@ -9,7 +9,7 @@ Cahiers Marrou
 
 ## Lire ou télécharger les Cahiers Marrou
 
-**Cliquer sur le sommaire pour consulter le cahier correspondant
+Cliquer sur le sommaire pour consulter le cahier correspondant
 
 ## 
 

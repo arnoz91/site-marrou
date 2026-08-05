@@ -51,6 +51,6 @@ Jean-Marie Soutou. *Un diplomate engagé. Mémoires 1939-1979*. Présentation et
 
 Mémoires de maîtrise
 
-Virginie Valentin, sous la direction de Mme Evelyne Patlagean, Université Paris-X- Nanterre, octobre 1996: « Henri Irénée Marrou : Un travail d’historien entre l’humanisme antique et le devenir chrétien. »
+Virginie Valentin, sous la direction de Mme Evelyne Patlagean, Université Paris-X- Nanterre, octobre 1996 : « Henri Irénée Marrou : Un travail d’historien entre l’humanisme antique et le devenir chrétien. »
 
 Delphine Barre, sous la direction de Mme Brigitte Wache, Université du Maine, septembre 1998, « Henri-Irénée Marrou, acteur et témoin de son temps. »
