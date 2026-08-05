@@ -11,3 +11,7 @@ Thumbs.db
 
 # Captures de vérification, régénérables
 _captures/
+
+# Documents sources : contiennent des identifiants en clair, ne jamais publier
+SAHIM_Site Internet_Récupération/
+build/archive/
