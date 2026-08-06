@@ -7,9 +7,13 @@ backend:
   # Relais d'authentification (sveltia-cms-auth sur Cloudflare Workers).
   base_url: https://sveltia-cms-auth.arnoz91800.workers.dev
 
-# Flux éditorial : les modifications passent par un état « en relecture »
-# avant publication. C'est ce qui distingue un membre d'un administrateur.
-publish_mode: editorial_workflow
+# Publication directe : un clic sur « Publier » suffit, sans étape de
+# relecture intermédiaire. Tant qu'un seul administrateur édite, le flux à
+# deux états (brouillon / relu) n'apporte rien. Repasser à
+# « editorial_workflow » quand un membre (accès GitHub Triage) contribuera
+# réellement : les rôles Write et Triage sur le dépôt suffiront alors à
+# distinguer qui publie de qui propose.
+publish_mode: simple
 
 # Les images et PDF téléversés atterrissent ici. Bien viser « statique/ » et
 # non « site/ » : site/ est reconstruit à chaque publication, un fichier
