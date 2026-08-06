@@ -1,5 +1,5 @@
 ---
-titre: Henri-Irénée Marrou
+titre: Henri Irénée Marrou
 sous_titre: Historien, penseur, témoin
 dates: 1904—1977
 chapeau: Henri Irénée Marrou est un des grands historiens du XX<sup>e</sup> siècle.
