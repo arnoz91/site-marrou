@@ -1,10 +1,12 @@
 ---
-titre: "Biographie"
-chapeau: "De Marseille à Rome, de Lyon à la Sorbonne, un itinéraire intellectuel, spirituel et civique."
-resume: "De l’enfance marseillaise à l’Institut de France"
-rubrique: "vie-et-oeuvre"
+titre: Biographie
+rubrique: vie-et-oeuvre
 ordre: 1
+chapeau: De Marseille à Rome, de Lyon à la Sorbonne, un itinéraire intellectuel, spirituel et civique.
+resume: De l’enfance marseillaise à l’Institut de France
+description: ''
 ---
+
 ## Enfance et prime jeunesse (1904-1925)
 
 ![](/assets/images/archive/HIMenfant.jpg)
@@ -99,6 +101,6 @@ Mais tout s’assombrit avec la mort, le 9 janvier 1976, de Jeanne Marrou, dont 
 
 Deux livres posthumes d’Henri Marrou paraissent en 1978 : Christiana tempora. Mélanges d’histoire, d’archéologie, d’épigraphie et de patristique, et H.I. Marrou. Crise de notre temps et réflexion chrétienne (de 1930 à 1975), avec une introduction de Jean-Marie Mayeur, une préface de Charles Piétri, et le complément de nombreux témoignages.
 
-Un troisième livre, ses Carnets posthumes, est paru en 2006, édité par Françoise Marrou-Flamant, préfacé par le cardinal Jean-Marie Lustiger, analysé par Mgr Claude Dagens et présenté par Jacques Prévotat.
+Un troisième livre, ses _Carnets posthumes_, est paru en 2006, édité par Françoise Marrou-Flamant, préfacé par le cardinal Jean-Marie Lustiger, analysé par Mgr Claude Dagens et présenté par Jacques Prévotat.
 
-1Cette courte biographie peut être utilement complétée par le livre de Pierre Riché, *Henri Irénée Marrou historien engagé* (préfacé par René Rémond), Les Éditions du Cerf, Paris 2003.
+1Cette courte biographie peut être utilement complétée par le livre de Pierre Riché, _Henri Irénée Marrou historien engagé_ (préfacé par René Rémond), Les Éditions du Cerf, Paris 2003.
