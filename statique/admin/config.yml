@@ -1,14 +1,14 @@
 # Configuration de l'interface d'administration.
 #
-# À COMPLÉTER AVANT LA MISE EN LIGNE : remplacer « VOTRE-COMPTE/VOTRE-DEPOT »
-# ci-dessous par le dépôt réel. Tant que ce n'est pas fait, l'interface ne peut
-# pas se connecter. Voir ADMINISTRATION.md à la racine du projet.
+# RESTE À COMPLÉTER : « base_url » ci-dessous, une fois le relais
+# d'authentification installé. Tant que ce n'est pas fait, l'interface
+# s'affiche mais la connexion échoue. Voir TUTORIEL_GITHUB.md, étape 3.
 
 backend:
   name: github
-  repo: VOTRE-COMPTE/VOTRE-DEPOT
+  repo: arnoz91/site-marrou
   branch: main
-  # Relais d'authentification : voir ADMINISTRATION.md, étape 3.
+  # Relais d'authentification : voir TUTORIEL_GITHUB.md, étape 3.
   base_url: https://VOTRE-RELAIS.workers.dev
 
 # Flux éditorial : les modifications passent par un état « en relecture »

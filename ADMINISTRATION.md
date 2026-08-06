@@ -12,20 +12,20 @@ Comptez une heure la première fois. Ensuite, plus rien à faire.
 
 ---
 
-## Étape 1 — Créer le dépôt
+## Étape 1 — Envoyer le projet
 
-1. Créer un compte sur [github.com](https://github.com) si vous n’en avez pas.
-   Gratuit, aucune carte bancaire.
-2. Créer un dépôt **public**, par exemple `site-marrou`. Avec l’offre
-   gratuite, GitHub Pages ne publie que depuis un dépôt public ; un dépôt
-   privé demanderait l’abonnement Pro, hors budget. Ce qui doit rester
-   confidentiel est déjà exclu par le `.gitignore`.
-3. Depuis ce dossier, envoyer le projet (le dépôt local existe déjà) :
+Le compte `arnoz91` et le dépôt public
+[`arnoz91/site-marrou`](https://github.com/arnoz91/site-marrou) existent déjà,
+et le dépôt distant est déjà déclaré ici. Le dépôt doit rester **public** :
+avec l’offre gratuite, GitHub Pages ne publie pas depuis un dépôt privé.
 
 ```bash
-git remote add origin https://github.com/VOTRE-COMPTE/site-marrou.git
+git pull --rebase origin main
 git push -u origin main
 ```
+
+Le `pull` récupère le `README.md` créé à la volée avec le dépôt ; sans lui,
+l’envoi est refusé.
 
 Le dossier `site/` n’est volontairement pas envoyé : il est reconstruit
 automatiquement à chaque publication.
@@ -37,8 +37,8 @@ Dans le dépôt, **Settings → Pages → Source : GitHub Actions**.
 L’envoi de l’étape 1 ayant eu lieu avant, relancer une fois le robot à la
 main : onglet **Actions → Construire et publier → Run workflow**. Ensuite le
 site se construit et se publie seul.
-L’adresse sera `https://VOTRE-COMPTE.github.io/site-marrou/`, en attendant le
-vrai nom de domaine.
+L’adresse est `https://arnoz91.github.io/site-marrou/`, en attendant le vrai
+nom de domaine.
 
 > **Nom de domaine.** Une fois acheté (une douzaine d’euros par an), l’ajouter
 > dans **Settings → Pages → Custom domain**, et mettre à jour `url` dans
@@ -65,14 +65,15 @@ demande un tout petit service intermédiaire, gratuit et à installer une fois.
 
 ## Étape 4 — Compléter la configuration
 
-Dans `statique/admin/config.yml`, remplacer :
+Dans `statique/admin/config.yml`, une seule ligne reste à écrire — `repo:` est
+déjà renseigné :
 
 ```yaml
-repo: VOTRE-COMPTE/VOTRE-DEPOT     # → VOTRE-COMPTE/site-marrou
 base_url: https://VOTRE-RELAIS.workers.dev   # → l'adresse de l'étape 3
 ```
 
-Puis renvoyer :
+Le plus simple est de la modifier directement sur GitHub (crayon *Edit this
+file*, puis **Commit changes**). Sinon :
 
 ```bash
 git add statique/admin/config.yml && git commit -m "Configuration de l'administration" && git push

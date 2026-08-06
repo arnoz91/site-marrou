@@ -1,12 +1,12 @@
 # Mettre le site en ligne — tutoriel pas à pas
 
 Ce document s’adresse à quelqu’un qui **n’a jamais utilisé GitHub**. Il ne
-suppose rien : chaque écran, chaque bouton est décrit. Suivez-le dans l’ordre,
-sans sauter d’étape.
+suppose rien : chaque écran, chaque bouton est décrit, et **toutes les adresses
+sont déjà remplies** pour le compte `arnoz91` et le dépôt `site-marrou`. Il n’y
+a rien à adapter : suivez dans l’ordre, sans sauter d’étape.
 
-Comptez **une heure et demie** la première fois, en une seule fois de
-préférence. Ensuite, plus jamais : la mise à jour du site se fera depuis une
-page web, sans rien de tout ceci.
+Comptez **une heure** en une seule fois de préférence. Ensuite, plus jamais :
+la mise à jour du site se fera depuis une page web, sans rien de tout ceci.
 
 > **Si un écran ne ressemble pas à ce qui est décrit**, c’est que le service a
 > changé son interface depuis la rédaction. Le principe reste le même :
@@ -14,6 +14,24 @@ page web, sans rien de tout ceci.
 > sont signalés en gras.
 
 ---
+
+## Où vous en êtes
+
+| | État |
+| --- | --- |
+| Compte GitHub `arnoz91` | ✅ créé |
+| Dépôt [`arnoz91/site-marrou`](https://github.com/arnoz91/site-marrou), public | ✅ créé |
+| Le projet envoyé sur GitHub | ⬜ étape 1 |
+| La publication activée | ⬜ étape 2 |
+| Le relais d’authentification | ⬜ étape 3 |
+| L’adresse du relais reportée dans le projet | ⬜ étape 4 |
+| Les accès des administrateurs | ⬜ étape 5 |
+
+Le dépôt est bien **public**, ce qui est nécessaire : avec l’offre gratuite,
+GitHub Pages ne publie pas depuis un dépôt privé. Ce n’est pas gênant — le
+contenu du site est fait pour être lu, et ce qui doit rester confidentiel
+(le dossier de récupération, qui contient des identifiants en clair) est déjà
+exclu de tout envoi par le fichier `.gitignore`.
 
 ## Ce que vous allez construire
 
@@ -25,17 +43,17 @@ Trois choses, chacune gratuite :
 | **GitHub Pages** | Diffuse les pages sur Internet | Le kiosque |
 | **Un « relais » Cloudflare** | Vérifie que celui qui veut modifier le site en a le droit | Le portier |
 
-À la fin, les administrateurs iront sur une adresse du type
-`https://…/admin/`, se connecteront, corrigeront un texte, cliqueront sur
-**Publier** — et le site sera à jour une minute plus tard.
+À la fin, les administrateurs iront sur
+`https://arnoz91.github.io/site-marrou/admin/`, se connecteront, corrigeront un
+texte, cliqueront sur **Publier** — et le site sera à jour une minute plus tard.
 
 ## Le vocabulaire, une fois pour toutes
 
 Cinq mots reviendront. Ils n’ont rien de compliqué.
 
 - **Dépôt** (*repository*, ou *repo*) — le dossier du projet, hébergé chez
-  GitHub. Le nôtre contiendra les textes, les images et le programme qui
-  fabrique les pages.
+  GitHub. Le nôtre contient les textes, les images et le programme qui fabrique
+  les pages.
 - **Envoyer / pousser** (*push*) — copier vers GitHub ce qui est sur votre
   ordinateur.
 - **Commit** — une modification enregistrée, datée et signée. L’historique du
@@ -48,111 +66,62 @@ Cinq mots reviendront. Ils n’ont rien de compliqué.
 
 ## Avant de commencer
 
-Munissez-vous de :
+Munissez-vous d’un bloc-notes pour trois codes provisoires (étape 3). **Ne les
+enregistrez pas dans le dossier du projet.**
 
-- une **adresse électronique** à laquelle vous avez accès tout de suite ;
-- un **téléphone** (GitHub demande une double authentification) ;
-- de quoi noter deux ou trois codes provisoirement — un bloc-notes fait
-  l’affaire, mais **ne les enregistrez pas dans le dossier du projet**.
-
-> ### Point de sécurité, à lire
+> ### Point de sécurité, à faire indépendamment
 >
-> Le dossier `SAHIM_Site Internet_Récupération/` contient un document où
-> figurent des identifiants **en clair**. Il est volontairement exclu de tout
-> envoi (fichier `.gitignore`), et doit le rester.
->
-> Le mot de passe de `himarroudavenson@gmail.com` a circulé dans ce document :
-> **considérez-le comme compromis et changez-le**, indépendamment de tout ce
-> qui suit.
+> Le mot de passe de `himarroudavenson@gmail.com` a circulé en clair dans un
+> document partagé. **Considérez-le comme compromis et changez-le.**
 
 ---
 
-# Étape 1 — Créer votre compte GitHub
-
-*Environ 10 minutes.*
-
-1. Allez sur **[github.com](https://github.com)** et cliquez sur **Sign up**
-   (en haut à droite).
-2. Saisissez votre adresse électronique, puis un mot de passe, puis un nom
-   d’utilisateur. Ce nom sera visible : `sahim`, `amis-marrou`, votre nom…
-   Il apparaîtra dans l’adresse provisoire du site, choisissez-le sobre.
-3. GitHub envoie un **code à huit chiffres** par courriel. Recopiez-le.
-4. GitHub pose quelques questions sur votre usage : répondez ce que vous
-   voulez, cela n’a aucune conséquence. À la fin, choisissez l’offre
-   **Free**.
-5. **Activez la double authentification** quand GitHub le propose (il
-   l’exigera de toute façon sous trente jours). Le plus simple : « Set up
-   using an app », puis installez *Google Authenticator* ou *Microsoft
-   Authenticator* sur votre téléphone et scannez le carré noir et blanc.
-   **Notez les codes de secours** que GitHub affiche ensuite, et gardez-les
-   ailleurs que dans le projet.
-
-✅ **Vous devez pouvoir** vous déconnecter, vous reconnecter, et voir votre nom
-en haut à droite.
-
----
-
-# Étape 2 — Créer le dépôt
+# Étape 1 — Envoyer le projet
 
 *Environ 5 minutes.*
 
-1. En haut à droite, cliquez sur le **+** puis **New repository**.
-2. Remplissez :
-   - **Repository name** : `site-marrou`
-   - **Description** : *Site de la Société des amis d’Henri Irénée Marrou*
-   - **Public** ← important, voir l’encadré
-   - Ne cochez **rien** d’autre : ni *Add a README*, ni *.gitignore*, ni
-     *license*. Le projet apporte déjà les siens, et les cocher créerait un
-     conflit à l’envoi.
-3. **Create repository**.
+Le dépôt existe mais ne contient qu’un fichier `README.md` créé automatiquement.
+Il faut y déposer le projet.
 
-GitHub affiche alors une page d’instructions. Ignorez-la, la suite est
-ci-dessous.
-
-> ### Pourquoi public ?
->
-> Avec l’offre gratuite, **GitHub Pages ne publie que depuis un dépôt public**.
-> Un dépôt privé exigerait l’abonnement Pro, soit environ 45 €/an — au-delà du
-> budget fixé.
->
-> Ce n’est pas gênant : le contenu du site est fait pour être lu. Ce qui doit
-> rester privé (le dossier de récupération, les identifiants) est déjà exclu
-> par le fichier `.gitignore`, et le restera.
-
-## Envoyer le projet
-
-Sur votre ordinateur, ouvrez un terminal **dans le dossier du projet** et
-lancez ces deux commandes, en remplaçant `VOTRE-COMPTE` par votre nom
-d’utilisateur GitHub.
+Sur votre ordinateur, ouvrez un terminal **dans le dossier du projet**. La
+première commande récupère ce README pour éviter un refus :
 
 ```bash
-git remote add origin https://github.com/VOTRE-COMPTE/site-marrou.git
+git pull --rebase origin main
 ```
+
+Puis l’envoi proprement dit :
 
 ```bash
 git push -u origin main
 ```
 
 Une fenêtre de navigateur s’ouvre et demande d’autoriser *Git Credential
-Manager* à accéder à votre compte : acceptez. C’est la seule fois.
+Manager* à accéder à votre compte GitHub : acceptez, en étant bien connecté
+comme **arnoz91**. C’est la seule fois.
 
-Rechargez la page du dépôt sur GitHub : vos fichiers y sont.
+Rechargez [la page du dépôt](https://github.com/arnoz91/site-marrou) : vos
+fichiers y sont.
+
+✅ **Vous devez voir** les dossiers `build`, `contenu`, `statique` et le fichier
+`TUTORIEL_GITHUB.md` sur la page du dépôt.
 
 > Le dossier `site/` n’apparaît pas, et c’est normal — il est refabriqué à
 > chaque publication. Le dossier `SAHIM_Site Internet_Récupération/` non plus,
 > et c’est voulu.
-
-✅ **Vous devez voir** les dossiers `build`, `contenu`, `statique` sur la page
-du dépôt.
+>
+> Si le `push` est refusé avec le mot *rejected*, c’est que la première
+> commande n’a pas été faite : relancez-la.
 
 ---
 
-# Étape 3 — Activer la publication
+# Étape 2 — Activer la publication
 
 *Environ 3 minutes, puis 2 minutes d’attente.*
 
-1. Dans le dépôt, onglet **Settings** (la roue dentée, en haut à droite de la
-   barre d’onglets — pas le Settings de votre compte).
+1. Sur [la page du dépôt](https://github.com/arnoz91/site-marrou), onglet
+   **Settings** (la roue dentée, à droite de la barre d’onglets — attention,
+   pas le Settings de votre compte, qui est dans le menu de votre avatar).
 2. Colonne de gauche, rubrique **Pages**.
 3. Sous **Build and deployment**, champ **Source** : choisissez
    **GitHub Actions** (et non « Deploy from a branch »).
@@ -161,68 +130,56 @@ Rien d’autre à valider, le choix est enregistré aussitôt.
 
 ## Lancer la première publication
 
-L’envoi de l’étape 2 a eu lieu avant que Pages ne soit activé : il faut
+L’envoi de l’étape 1 a eu lieu avant que Pages ne soit activé : il faut
 relancer le robot une fois à la main.
 
-1. Onglet **Actions**.
+1. Onglet **Actions** :
+   [github.com/arnoz91/site-marrou/actions](https://github.com/arnoz91/site-marrou/actions)
 2. Colonne de gauche, cliquez sur **Construire et publier**.
-3. Bouton **Run workflow** à droite, puis **Run workflow** dans le petit
-   menu qui s’ouvre.
+3. Bouton **Run workflow** à droite, puis **Run workflow** dans le petit menu
+   qui s’ouvre.
 4. Attendez : une pastille jaune tourne, puis devient **verte**. Comptez une à
    deux minutes.
 
-Votre site est en ligne à l’adresse :
+Votre site est en ligne :
 
-```
-https://VOTRE-COMPTE.github.io/site-marrou/
-```
+### 👉 https://arnoz91.github.io/site-marrou/
 
-✅ **Ouvrez-la.** Vous devez voir la page d’accueil, avec l’ex-libris et le
-portrait.
+✅ **Ouvrez cette adresse.** Vous devez voir la page d’accueil, avec l’ex-libris
+et le portrait.
 
 > ### Si la pastille est rouge
 >
 > Cliquez dessus : GitHub affiche le journal, et la ligne en rouge dit ce qui
 > ne va pas. Les deux causes courantes :
-> - *« Get Pages site failed »* → l’étape 3.3 n’a pas été faite ou pas
+> - *« Get Pages site failed »* → l’étape 2.3 n’a pas été faite ou pas
 >   enregistrée ;
 > - une erreur dans `verifier.py` → un lien cassé dans le contenu. Le message
 >   nomme la page et le lien fautif.
 
-## Le nom de domaine, plus tard
-
-L’adresse en `github.io` est provisoire et fonctionne parfaitement. Quand
-l’association aura acheté `henrimarrou.org` (une douzaine d’euros par an) :
-
-1. **Settings → Pages → Custom domain** : saisir le nom, **Save** ;
-2. chez le vendeur du domaine, créer les enregistrements DNS que GitHub
-   indique alors à l’écran ;
-3. cocher **Enforce HTTPS** une fois le certificat délivré (quelques heures) ;
-4. dans l’administration du site, écran **Réglages → Informations générales**,
-   corriger le champ **Adresse du site**.
-
 ---
 
-# Étape 4 — Le relais d’authentification
+# Étape 3 — Le relais d’authentification
 
 *Environ 25 minutes. C’est l’étape la plus longue, et la seule un peu ingrate.*
 
 ## Pourquoi cette étape
 
-L’interface d’administration est une page web sans serveur. Pour vous
-connecter à GitHub, elle a besoin d’un intermédiaire minuscule qui détient un
-secret — un secret qu’on ne peut pas laisser dans une page web publique. Ce
-sera un **Worker Cloudflare** : gratuit, et vous n’y toucherez plus jamais.
+L’interface d’administration est une page web sans serveur. Pour vous connecter
+à GitHub, elle a besoin d’un intermédiaire minuscule qui détient un secret — un
+secret qu’on ne peut pas laisser dans une page web publique. Ce sera un
+**Worker Cloudflare** : gratuit, et vous n’y toucherez plus jamais.
 
 Trois sous-étapes, dans cet ordre : **installer le relais**, **le déclarer à
 GitHub**, **relier les deux**.
 
-## 4a — Installer le relais
+## 3a — Installer le relais
 
 1. Créez un compte sur **[dash.cloudflare.com](https://dash.cloudflare.com)**
    (gratuit ; aucune carte bancaire pour l’offre Workers Free). Validez
    l’adresse électronique.
-2. Allez sur **[github.com/sveltia/sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth)**.
+2. Allez sur
+   **[github.com/sveltia/sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth)**.
 3. Dans le fichier de présentation (le *README*, affiché sous la liste des
    fichiers), cliquez sur le bouton **Deploy to Cloudflare Workers**.
 4. Cloudflare demande d’autoriser l’accès à votre compte GitHub : acceptez.
@@ -234,43 +191,46 @@ Au bout d’une minute, Cloudflare affiche l’adresse du relais. Elle ressemble
 https://sveltia-cms-auth.quelquechose.workers.dev
 ```
 
-**Copiez-la dans votre bloc-notes.** Elle servira deux fois.
+**Copiez-la dans votre bloc-notes.** C’est la seule valeur de tout ce tutoriel
+que je ne peux pas vous donner d’avance : elle dépend de votre compte
+Cloudflare. Elle servira deux fois.
 
 > Si vous ne retrouvez pas l’adresse : tableau de bord Cloudflare →
 > **Workers & Pages** → cliquez sur `sveltia-cms-auth`. Elle est affichée en
 > haut de la page.
 
-## 4b — Déclarer le relais à GitHub
+## 3b — Déclarer le relais à GitHub
 
-1. Sur GitHub, allez sur
+1. Allez sur
    **[github.com/settings/developers](https://github.com/settings/developers)**
    (c’est le Settings de votre **compte**, pas celui du dépôt).
 2. **OAuth Apps** → **New OAuth App**.
-3. Remplissez :
+3. Remplissez ainsi :
 
-   | Champ | Valeur |
+   | Champ | Valeur à saisir |
    | --- | --- |
    | **Application name** | `Administration site Marrou` |
-   | **Homepage URL** | l’adresse de votre site (celle en `github.io` pour l’instant) |
-   | **Authorization callback URL** | l’adresse du relais **suivie de** `/callback` |
+   | **Homepage URL** | `https://arnoz91.github.io/site-marrou/` |
+   | **Application description** | *(laisser vide)* |
+   | **Authorization callback URL** | l’adresse de votre relais **suivie de** `/callback` |
 
-   Le troisième champ est le seul qui doit être exact au caractère près :
+   Le dernier champ est le seul qui doit être exact au caractère près :
 
    ```
    https://sveltia-cms-auth.quelquechose.workers.dev/callback
    ```
 
 4. **Register application**.
-5. GitHub affiche un **Client ID**. Copiez-le.
+5. GitHub affiche un **Client ID**. Copiez-le dans le bloc-notes.
 6. Cliquez sur **Generate a new client secret**. GitHub affiche un long code :
    **c’est la seule fois où il est visible**. Copiez-le immédiatement.
 
-⚠️ Ces deux codes sont des clés. Ne les mettez dans aucun fichier du projet,
-ne les envoyez par courriel à personne. Ils vont être collés directement chez
+⚠️ Ces deux codes sont des clés. Ne les mettez dans aucun fichier du projet, ne
+les envoyez par courriel à personne. Ils vont être collés directement chez
 Cloudflare à l’étape suivante, après quoi vous pourrez les effacer de votre
 bloc-notes.
 
-## 4c — Relier les deux
+## 3c — Relier les deux
 
 1. Retournez sur Cloudflare, **Workers & Pages** → `sveltia-cms-auth`.
 2. Onglet **Settings**, rubrique **Variables and Secrets** (ou *Variables
@@ -280,9 +240,9 @@ bloc-notes.
 
    | Nom | Valeur | Type |
    | --- | --- | --- |
-   | `GITHUB_CLIENT_ID` | le Client ID de l’étape 4b | Texte |
-   | `GITHUB_CLIENT_SECRET` | le secret de l’étape 4b | **Secret** (chiffré) |
-   | `ALLOWED_DOMAINS` | `VOTRE-COMPTE.github.io` | Texte |
+   | `GITHUB_CLIENT_ID` | le Client ID de l’étape 3b | Texte |
+   | `GITHUB_CLIENT_SECRET` | le secret de l’étape 3b | **Secret** (chiffré) |
+   | `ALLOWED_DOMAINS` | `arnoz91.github.io` | Texte |
 
    Pour `GITHUB_CLIENT_SECRET`, choisissez bien le type **Secret** : la valeur
    devient illisible même pour vous, ce qui est le comportement voulu.
@@ -297,65 +257,66 @@ codes GitHub peuvent maintenant être effacés.
 
 ---
 
-# Étape 5 — Compléter la configuration
+# Étape 4 — Coller l’adresse du relais
 
-*Environ 5 minutes.*
+*Environ 3 minutes. Une seule valeur à écrire, directement sur GitHub.*
 
-Deux valeurs restent à écrire dans le projet. On peut le faire directement sur
-GitHub, sans terminal.
-
-1. Dans le dépôt, ouvrez `statique` → `admin` → `config.yml`.
+1. Ouvrez
+   [`statique/admin/config.yml`](https://github.com/arnoz91/site-marrou/blob/main/statique/admin/config.yml)
+   dans le dépôt.
 2. Cliquez sur le **crayon** (*Edit this file*), en haut à droite du fichier.
-3. Repérez ces deux lignes :
+3. Repérez, vers le haut, la ligne :
 
    ```yaml
-     repo: VOTRE-COMPTE/VOTRE-DEPOT
      base_url: https://VOTRE-RELAIS.workers.dev
    ```
 
-   et remplacez-les par, par exemple :
+   et remplacez l’adresse par la vôtre :
 
    ```yaml
-     repo: sahim/site-marrou
      base_url: https://sveltia-cms-auth.quelquechose.workers.dev
    ```
 
    Attention à ne pas toucher aux espaces en début de ligne : dans ce format,
-   l’indentation a un sens.
+   l’indentation a un sens. La ligne `repo: arnoz91/site-marrou` juste
+   au-dessus est déjà correcte, n’y touchez pas.
 
 4. En bas, bouton vert **Commit changes**. Laissez « Commit directly to the
    `main` branch ». **Commit changes** à nouveau.
 
 Le robot repart tout seul. Une minute plus tard, l’interface est active.
 
-✅ **Vérification** : ouvrez `https://VOTRE-COMPTE.github.io/site-marrou/admin/`.
-Un bouton **Sign in with GitHub** doit s’afficher. Cliquez : GitHub demande
-d’autoriser l’application, acceptez — et l’interface s’ouvre sur la liste des
-pages du site.
+### 👉 https://arnoz91.github.io/site-marrou/admin/
+
+✅ **Vérification** : ouvrez cette adresse. Un bouton **Sign in with GitHub**
+doit s’afficher. Cliquez : GitHub demande d’autoriser l’application, acceptez —
+et l’interface s’ouvre sur la liste des pages du site.
 
 > ### Si ça ne marche pas
 >
 > | Symptôme | Cause presque certaine |
 > | --- | --- |
-> | Page blanche | `repo:` mal orthographié, ou indentation cassée dans `config.yml` |
-> | « Redirect URI mismatch » | Le *callback URL* de l’étape 4b ne se termine pas par `/callback`, ou comporte une faute |
-> | « Not allowed » / « Forbidden » | `ALLOWED_DOMAINS` ne correspond pas au domaine depuis lequel vous ouvrez la page |
+> | Page blanche | Indentation cassée dans `config.yml` — rouvrez le fichier, la ligne `base_url` doit commencer par exactement deux espaces |
+> | « Redirect URI mismatch » | Le *callback URL* de l’étape 3b ne se termine pas par `/callback`, ou comporte une faute |
+> | « Not allowed » / « Forbidden » | `ALLOWED_DOMAINS` doit être `arnoz91.github.io`, sans `https://` ni barre oblique |
 > | Connexion qui tourne sans fin | `GITHUB_CLIENT_SECRET` mal recopié — régénérez-en un et remettez-le |
 
 ---
 
-# Étape 6 — Donner les accès
+# Étape 5 — Donner les accès
 
 *Environ 5 minutes.*
 
-1. Dépôt → **Settings** → colonne de gauche, **Collaborators**.
+1. [**Settings → Collaborators**](https://github.com/arnoz91/site-marrou/settings/access)
+   du dépôt.
 2. **Add people**, saisissez le nom d’utilisateur GitHub de la personne (elle
-   doit avoir créé son compte au préalable — étape 1, en trois minutes).
+   doit avoir créé son compte au préalable : trois minutes sur
+   [github.com](https://github.com), bouton **Sign up**).
 3. Choisissez son rôle :
 
    | Rôle | Pour qui | Ce que ça permet |
    | --- | --- | --- |
-   | **Write** | Administrateurs | Modifier et publier directement |
+   | **Write** | Administrateurs (Arnaud Zemmour, Fabien Guilloux) | Modifier et publier directement |
    | **Triage** | Membres contributeurs | Proposer une modification, sans publier |
 
 4. La personne reçoit une invitation par courriel, qu’elle doit accepter.
@@ -372,7 +333,8 @@ Plus jamais de terminal ni de configuration. Tout se passe sur une page.
 
 ## Corriger un texte
 
-1. Aller sur `https://…/admin/`, **Sign in with GitHub**.
+1. Aller sur https://arnoz91.github.io/site-marrou/admin/, **Sign in with
+   GitHub**.
 2. **Pages** dans la colonne de gauche, cliquer sur la page.
 3. Corriger dans l’éditeur. La colonne de droite montre le rendu.
 4. **Publier** (ou **Soumettre à relecture**, pour un membre).
@@ -381,9 +343,9 @@ Plus jamais de terminal ni de configuration. Tout se passe sur une page.
 ## Ajouter une page
 
 **Pages → Nouveau**. Renseignez le titre, choisissez la rubrique, écrivez.
-La page apparaît d’elle-même dans sa rubrique, dans le rail de navigation,
-dans les liens précédent/suivant et dans la recherche du site : il n’y a
-aucune liste à tenir à jour.
+La page apparaît d’elle-même dans sa rubrique, dans le rail de navigation, dans
+les liens précédent/suivant et dans la recherche du site : il n’y a aucune
+liste à tenir à jour.
 
 ## Ajouter une image ou un PDF
 
@@ -396,10 +358,28 @@ Onglet **Workflow** : les contributions en attente, à accepter ou refuser.
 
 ## Revenir en arrière
 
-Chaque modification est datée et signée dans l’historique GitHub (onglet
-**Commits** du dépôt). On peut toujours retrouver et rétablir un état
-antérieur. **Rien n’est jamais perdu** — c’est la principale raison d’avoir
-choisi GitHub plutôt qu’un éditeur en ligne classique.
+Chaque modification est datée et signée dans
+[l’historique du dépôt](https://github.com/arnoz91/site-marrou/commits/main).
+On peut toujours retrouver et rétablir un état antérieur. **Rien n’est jamais
+perdu** — c’est la principale raison d’avoir choisi GitHub plutôt qu’un éditeur
+en ligne classique.
+
+---
+
+# Plus tard — le nom de domaine
+
+L’adresse en `github.io` est provisoire et fonctionne parfaitement. Quand
+l’association aura acheté `henrimarrou.org` (une douzaine d’euros par an) :
+
+1. [**Settings → Pages**](https://github.com/arnoz91/site-marrou/settings/pages)
+   → **Custom domain** : saisir `www.henrimarrou.org`, **Save** ;
+2. chez le vendeur du domaine, créer les enregistrements DNS que GitHub indique
+   alors à l’écran ;
+3. cocher **Enforce HTTPS** une fois le certificat délivré (quelques heures) ;
+4. chez Cloudflare, ajouter `,www.henrimarrou.org` à `ALLOWED_DOMAINS` ;
+5. dans l’administration du site, écran **Réglages → Informations générales**,
+   le champ **Adresse du site** contient déjà `https://www.henrimarrou.org` :
+   rien à changer si le domaine est bien celui-là.
 
 ---
 
@@ -407,11 +387,11 @@ choisi GitHub plutôt qu’un éditeur en ligne classique.
 
 | Où | Adresse |
 | --- | --- |
-| Le site | `https://VOTRE-COMPTE.github.io/site-marrou/` |
-| L’administration | `https://VOTRE-COMPTE.github.io/site-marrou/admin/` |
-| Le dépôt | `https://github.com/VOTRE-COMPTE/site-marrou` |
-| Les publications en cours | onglet **Actions** du dépôt |
-| Les accès | **Settings → Collaborators** |
+| Le site | https://arnoz91.github.io/site-marrou/ |
+| L’administration | https://arnoz91.github.io/site-marrou/admin/ |
+| Le dépôt | https://github.com/arnoz91/site-marrou |
+| Les publications en cours | https://github.com/arnoz91/site-marrou/actions |
+| Les accès | https://github.com/arnoz91/site-marrou/settings/access |
 | Le relais | tableau de bord Cloudflare → **Workers & Pages** |
 
 ## Ce que ça coûte
@@ -439,9 +419,13 @@ personnes qui modifient le site. Les lecteurs n’ont rien à faire, et le bouto
 d’irréversible. La modification est enregistrée comme une nouvelle version ;
 l’ancienne reste consultable et rétablissable.
 
-**Et si GitHub ferme, ou change ses conditions ?** Tout le contenu du site
-est dans des fichiers texte ordinaires, lisibles sans aucun logiciel
-particulier. On peut les emporter ailleurs en les copiant.
+**Le dépôt est public : quelqu’un peut-il modifier le site ?** Non. Public
+signifie *lisible* par tous ; seuls les collaborateurs de l’étape 5 peuvent
+écrire.
+
+**Et si GitHub ferme, ou change ses conditions ?** Tout le contenu du site est
+dans des fichiers texte ordinaires, lisibles sans aucun logiciel particulier.
+On peut les emporter ailleurs en les copiant.
 
 **Puis-je travailler à plusieurs en même temps ?** Oui, tant que ce n’est pas
 sur la même page au même moment. Si deux personnes modifient la même page,
