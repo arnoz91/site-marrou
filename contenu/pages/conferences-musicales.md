@@ -9,22 +9,22 @@ A Lyon, de 1942 à 1945, Henri Marrou contribue, comme conférencier et présent
 
 Voici les sujets traités par Henri Marrou :
 
-« Introduction historique à un concert de musique religieuse »
+- « Introduction historique à un concert de musique religieuse »
 
-« La création de l’opéra en Italie et Claudio Monteverdi »
+- « La création de l’opéra en Italie et Claudio Monteverdi »
 
-« La danse à travers les âges »
+- « La danse à travers les âges »
 
-« La musique américaine »
+- « La musique américaine »
 
-« Le moyen âge, source de la musique occidentale »
+- « Le moyen âge, source de la musique occidentale »
 
-« Initiation à la musique grecque »
+- « Initiation à la musique grecque »
 
-« Jean-Sébastien Bach »
+- « Jean-Sébastien Bach »
 
-« Musique et radio »
+- « Musique et radio »
 
-« La chanson d’enfants »
+- « La chanson d’enfants »
 
-« Moussorgski. »
+- « Moussorgski. »

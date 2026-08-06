@@ -15,4 +15,4 @@ H. Marrou fait siennes les idées fondatrices du Syndicat Général de l’Educa
 
 À dater de mai 1968, le syndicat est agité de soubresauts « gauchistes » ; le comité national de 1970 reflète des divisions qui ne cessent de s’élargir. En octobre 1973, Paul Vignaux et son successeur au secrétariat national Charles Pietri constatent que le SGEN a rompu « dans la conduite du syndicalisme fondé en 1937 » et démissionnent du Comité national. Quelques mois après, vingt universitaires dont Henri Marrou cosignent une lettre de démission qui paraît dans Le Monde du 6 mars 1974.
 
-## [Sur Jean Lecuir lien avec le PDF Henri Marrou syndicaliste]
+[Sur Jean Lecuir lien avec le PDF Henri Marrou syndicaliste]

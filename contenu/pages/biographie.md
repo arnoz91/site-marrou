@@ -35,9 +35,7 @@ En 1928, Henri Marrou, lors d’une excursion géographique à Grenoble, a renco
 
 Le 7 avril il a épousé Jeanne Bouchet.
 
-## Entre l’agrégation et la doctorat (1930-1939) :
-
-## l’Italie, puis le Caire, et l’immédiat avant-guerre.
+## Entre l’agrégation et la doctorat (1930-1939) : l’Italie, puis le Caire, et l’immédiat avant-guerre.
 
 ![](/assets/images/archive/HIMcouple2enfants.jpg)
 

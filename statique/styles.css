@@ -467,9 +467,21 @@ cite { font-style: italic; }
 /* Texte long -------------------------------------------------------------- */
 .prose { max-width: 40rem; }
 .prose h2 {
-  font-size: clamp(1.4rem, 1.15rem + 0.9vw, 1.95rem);
+  font-size: clamp(1.3rem, 1.1rem + 0.75vw, 1.7rem);
   margin: 2.2em 0 0.6rem;
 }
+
+/* Listes bibliographiques : des dizaines d'entrées se suivent, chacune sur
+   plusieurs lignes. Une puce ronde et un interligne serré les distinguent
+   sans les transformer en pavé. */
+.prose ul { padding-left: 1.4rem; }
+.prose li {
+  margin-bottom: 0.75em;
+  padding-left: 0.15rem;
+  line-height: 1.55;
+}
+.prose li::marker { color: var(--mauve); font-size: 0.85em; }
+.prose li strong { color: var(--encre); }
 .prose > :first-child { margin-top: 0; }
 
 .prose p,

@@ -325,6 +325,15 @@ def en_ligne(fragment, images):
         return f"[{texte}]({cible})" if cible and not cible.startswith("PAGE:") else texte
     fragment = re.sub(r'<a\b[^>]*href="([^"]*)"[^>]*>(.*?)</a>', ancre, fragment, flags=re.S)
 
+    # Le soulignement de l'ancien éditeur sert à deux choses : marquer une
+    # section (tout le paragraphe souligné) ou mettre en valeur un nom de revue
+    # en tête d'entrée. Ce second cas devient du gras à l'intérieur du texte.
+    fragment = re.sub(
+        r'<span[^>]*text-decoration:\s*underline[^>]*>(.*?)</span>',
+        lambda m: (lambda t: f"**{t}** " if t else "")(
+            re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", m.group(1))).strip()),
+        fragment, flags=re.S)
+
     fragment = re.sub(r"<br\s*/?>", "\n", fragment)
     fragment = re.sub(r"</?(?:strong|b)\b[^>]*>", "**", fragment)
     fragment = re.sub(r"</?(?:em|i)\b[^>]*>", "*", fragment)
@@ -343,6 +352,48 @@ def en_ligne(fragment, images):
 INTERTITRE = re.compile(r"^(?:[IVX]+\.\s*)?(.{3,120})$")
 
 
+# Un astérisque n'est une puce que s'il est suivi d'une espace :
+# « *Cette liste… » est une mise en italique, pas une énumération.
+PUCE = re.compile(r"^(?:[-–—•·][ 	 ]*|\*(?!\*)[ 	 ]+)")
+
+
+def listes(blocs):
+    """Rétablit de vraies listes à puces.
+
+    L'ancien site n'utilisait pas de balise de liste : les énumérations sont
+    des paragraphes précédés d'un tiret ou d'un astérisque, ou de simples
+    paragraphes courts après un deux-points. D'où deux corrections :
+
+      - un seul marqueur par puce — « - – Tristesse » devenait « • – Tristesse » ;
+      - les énumérations sans marqueur redeviennent des listes.
+    """
+    sortie = []
+    for i, bloc in enumerate(blocs):
+        if bloc.startswith("## ") or bloc.startswith("!["):
+            sortie.append(bloc)
+            continue
+
+        corps = bloc[2:] if bloc.startswith("- ") else bloc
+        if PUCE.match(corps.lstrip("*")) or PUCE.match(corps):
+            # on retire tous les marqueurs empilés, on n'en remet qu'un
+            gras = corps.startswith("**")
+            nu = PUCE.sub("", corps.lstrip("*")).lstrip()
+            sortie.append("- " + ("**" + nu if gras else nu))
+            continue
+
+        # Énumération annoncée par un deux-points : les paragraphes courts qui
+        # suivent, tous bâtis sur le même modèle, forment une liste.
+        precedent = sortie[-1] if sortie else ""
+        court = len(re.sub(r"\*+", "", bloc)) < 160
+        if court and bloc.lstrip("*").startswith("«"):
+            annonce = precedent.rstrip().endswith(":") or precedent.startswith("- «")
+            if annonce:
+                sortie.append("- " + bloc)
+                continue
+        sortie.append(bloc)
+    return sortie
+
+
 def convertir(source, images, titre_page="", corriges=None):
     """Transforme le corps archivé d'une page en Markdown."""
     source = re.sub(r"<(script|style)\b.*?</\1>", "", source, flags=re.S | re.I)
@@ -350,7 +401,16 @@ def convertir(source, images, titre_page="", corriges=None):
 
     blocs = []
     for brut in re.split(r"(?i)</p>|</div>|</td>|</tr>|<!--SEP-->", source):
-        souligne = 'text-decoration: underline' in brut
+        # Un bloc n'est un intertitre que s'il est souligné DANS SA TOTALITÉ.
+        # Souligné en partie, c'est le nom de revue en tête d'une entrée de
+        # bibliographie : le promouvoir en titre donnait 43 gros titres sur la
+        # page « Articles divers », chacun redoublant le paragraphe suivant.
+        nu_bloc = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", brut)).strip()
+        souligne_txt = re.sub(r"\s+", " ", " ".join(
+            re.sub(r"<[^>]+>", " ", m) for m in re.findall(
+                r'<span[^>]*text-decoration:\s*underline[^>]*>(.*?)</span>',
+                brut, re.S))).strip()
+        souligne = bool(souligne_txt) and len(souligne_txt) >= len(nu_bloc) * 0.85
         centre = 'text-align: center' in brut
         rendu = en_ligne(brut, images)
         if not rendu:
@@ -367,6 +427,8 @@ def convertir(source, images, titre_page="", corriges=None):
                 blocs.append("## " + (m.group(1) if m else nu).strip(" *"))
             elif morceau.startswith("![") or morceau.startswith("**") or True:
                 blocs.append(morceau)
+
+    blocs = listes(blocs)
 
     # Le premier intertitre reprend souvent le titre de la page (il en tenait
     # lieu sur l'ancien site, qui n'affichait pas de titre au-dessus).
@@ -408,16 +470,24 @@ def convertir(source, images, titre_page="", corriges=None):
             vus.add(b)
         precedent = b
 
-    # Le HTML archivé imbrique les balises : la découpe rendait parfois la fin
-    # d'un paragraphe une seconde fois, comme bloc autonome. On écarte tout
-    # bloc entièrement contenu dans un autre.
-    longs = sorted((b for b in sortie if len(b) > 80), key=len, reverse=True)
-    inclus = set()
-    for i, grand in enumerate(longs):
-        for petit in longs[i + 1:]:
-            if petit not in inclus and petit in grand:
-                inclus.add(petit)
-    return "\n\n".join(b for b in sortie if b not in inclus)
+    # Dernier filet, par ressemblance : deux blocs très proches sont la même
+    # phrase, l'une venant de l'archive et l'autre de la version relue, quand
+    # l'appariement des corrections s'est décalé d'un paragraphe. On garde la
+    # seconde — c'est celle qui a été relue.
+    def nu_final(t):
+        t = re.sub(r"!?\[([^\]]*)\]\([^)]*\)", r"\1", t)
+        return re.sub(r"[^\w]", "", t).lower()
+
+    longs = [(i, nu_final(b)) for i, b in enumerate(sortie) if len(b) > 60]
+    a_jeter = set()
+    for k, (i, ni) in enumerate(longs):
+        for j, nj in longs[k + 1:]:
+            if i in a_jeter or j in a_jeter or not ni or not nj:
+                continue
+            court, long_ = (ni, nj) if len(ni) <= len(nj) else (nj, ni)
+            if difflib.SequenceMatcher(None, court, long_[:len(court)]).ratio() > 0.9:
+                a_jeter.add(i)
+    return "\n\n".join(b for i, b in enumerate(sortie) if i not in a_jeter)
 
 
 # --- Écriture ---------------------------------------------------------------
@@ -514,13 +584,22 @@ def appliquer_corrections(blocs, corriges):
             continue
 
         remplacement = typographie(corriges[meilleur])
+
+        # Le .docx a perdu la mise en valeur du nom de revue en tête d'entrée
+        # (elle était portée par un soulignement). On la replace : dans une
+        # liste de plusieurs dizaines de références, c'est elle qui permet de
+        # repérer une entrée d'un coup d'œil.
+        amorce = re.match(r"\*\*(.{2,60}?)\*\*", bloc)
+        if amorce and remplacement.startswith(amorce.group(1)):
+            n = len(amorce.group(1))
+            remplacement = f"**{remplacement[:n]}**{remplacement[n:]}"
         # on conserve le balisage du bloc d'origine (titre, citation, puce)
         if titre:
             remplacement = "## " + re.sub(r"^[IVX]+\.\s*", "", remplacement)
         elif bloc.startswith("> "):
             remplacement = "> " + remplacement
         elif bloc.startswith("- "):
-            remplacement = "- " + remplacement.lstrip("*• ")
+            remplacement = "- " + PUCE.sub("", remplacement).lstrip()
         sortie.append(remplacement)
         depart = meilleur + 1
     return sortie

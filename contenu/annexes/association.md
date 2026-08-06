@@ -4,7 +4,7 @@ chapeau: "Faire rayonner l’œuvre d’Henri-Irénée Marrou et favoriser l’�
 annexe: true
 ordre: 90
 ---
-L’Association dite « Société des amis d’Henri Irénée Marrou (Davenson) » a été créée en 2007. Elle a pour but :
+**L’Association** dite « Société des amis d’Henri Irénée Marrou (Davenson) » a été créée en 2007. Elle a pour but :
 
 de favoriser le rayonnement de sa pensée,
 
@@ -16,7 +16,7 @@ Sa durée est illimitée.
 
 Elle a son siège à Paris, 3 rue Castex – 75004. e-mail : contact@henrimarrou.org
 
-Le Conseil d’Administration compte onze membres :
+**Le Conseil d’Administration** compte onze membres :
 
 Président : Jacques Prévotat
 
@@ -26,7 +26,7 @@ Trésorière : Sabine Flamant
 
 Autres membres : Philippe Blaudeau, Claude Dagens, Janine Desmulliez, Fabien Guilloux, Françoise Marrou-Flamant, Benoît Pellistrandi, Jean-Marie Salamito.
 
-Son Comité d’honneur est constitué de Messieurs et Mesdames
+**Son Comité d’honneur** est constitué de Messieurs et Mesdames
 
 Jean Delumeau
 
@@ -66,7 +66,7 @@ Geneviève Vidal-Naquet
 
 Michel Winock
 
-Les adhérents sont convoqués à l’Assemblée Générale annuelle qui se tient au mois d’octobre de l’année en cours, dans une salle aimablement allouée par l’École Normale Supérieure, 45 rue d’Ulm 75015 Paris.
+**Les adhérents **sont convoqués à l’Assemblée Générale annuelle qui se tient au mois d’octobre de l’année en cours, dans une salle aimablement allouée par l’École Normale Supérieure, 45 rue d’Ulm 75015 Paris.
 
 Les délibérations sont soumises aux votes des seuls adhérents ; elles sont suivies d’une conférence ouverte à tous publics.
 

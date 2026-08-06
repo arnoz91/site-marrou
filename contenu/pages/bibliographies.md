@@ -7,9 +7,9 @@ ordre: 3
 ---
 Bibliographie des livres, articles, compte-rendus, communications érudits :
 
-* Bibliographie de l’œuvre historique d’Henri Irénée Marrou (de 1928 à 1975) établie par lui-même dans Patristique et humanisme, Mélanges, Editions du Seuil, coll. Patristica Sorbonensia, 1976, p. 9-24.
+- Bibliographie de l’œuvre historique d’Henri Irénée Marrou (de 1928 à 1975) établie par lui-même dans Patristique et humanisme, Mélanges, Editions du Seuil, coll. Patristica Sorbonensia, 1976, p. 9-24.
 
-* Bibliographie complémentaire de la précédente (1976-1977) dans Christiana tempora, Mélanges (édition posthume), Collection de l’Ecole Française de Rome, p. VII.
+- Bibliographie complémentaire de la précédente (1976-1977) dans Christiana tempora, Mélanges (édition posthume), Collection de l’Ecole Française de Rome, p. VII.
 
 Bibliographie des articles autres qu’érudits
 
