@@ -230,15 +230,20 @@ PDF_LOCAUX = {
 
 
 # --- Conversion -------------------------------------------------------------
-def typographie(texte):
+def typographie(texte, reparer_parentheses=True):
     """Guillemets français, apostrophes courbes, ponctuation double espacée.
 
     N'intervient jamais dans la cible d'un lien : une adresse contient des
     deux-points, qu'une espace insécable rendrait invalide.
+
+    `reparer_parentheses` ne sert que pour la saisie d'origine. Sur un texte
+    déjà propre, cette réparation abîme le balisage : « *MARROU (Henri-Irénée)* »
+    y deviendrait « *MARROU (Henri-Irénée) *», dont l'italique ne se ferme plus.
     """
     if "](" in texte:
         morceaux = re.split(r"(\]\([^)]*\))", texte)
-        return "".join(m if m.startswith("](") else typographie(m) for m in morceaux)
+        return "".join(m if m.startswith("](")
+                       else typographie(m, reparer_parentheses) for m in morceaux)
     texte = texte.replace("'", "’")
     # Les pages d'origine mêlent guillemets français et guillemets droits.
     # On ne convertit que si les droits vont par paires : un nombre impair
@@ -264,7 +269,8 @@ def typographie(texte):
     texte = re.sub(r"«[  ]*", "«" + INSECABLE, texte)
     texte = re.sub(r"[  ]*»", INSECABLE + "»", texte)
     texte = re.sub(r"[  ]*([,.])", r"\1", texte)
-    texte = parentheses(texte)
+    if reparer_parentheses:
+        texte = parentheses(texte)
     return re.sub(r"[  ]{2,}(?![;:!?»])", " ", texte)
 
 
@@ -456,6 +462,11 @@ def convertir(source, images, titre_page="", corriges=None):
 
     blocs = listes(blocs)
 
+    # Notes de chantier restées visibles sur l'ancien site : un paragraphe
+    # entier entre crochets, adressé à celui qui devait poser un lien
+    # (« [Sur Jean Lecuir lien avec le PDF Henri Marrou syndicaliste] »).
+    blocs = [b for b in blocs if not re.fullmatch(r"\[[^\]]*\]", b.strip())]
+
     # Le premier intertitre reprend souvent le titre de la page (il en tenait
     # lieu sur l'ancien site, qui n'affichait pas de titre au-dessus).
     if blocs and blocs[0].startswith("## ") and titre_page:
@@ -546,6 +557,26 @@ def ecrire(chemin, champs, corps):
     lignes += ["---", ""]
     with open(chemin, "w", encoding="utf-8") as f:
         f.write("\n".join(lignes) + (corps + "\n" if corps else ""))
+
+
+TEXTES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "textes")
+
+
+def texte_fourni(slug, images):
+    """Texte remis en forme par l'association, s'il existe pour cette page.
+
+    Certaines pages ont été retranscrites et remises en forme à la main :
+    l'archive n'en donnait qu'une saisie fautive, et la conversion
+    automatique ne pouvait rien en tirer de mieux. Ces textes-là remplacent
+    la conversion au lieu de la corriger paragraphe par paragraphe.
+    """
+    chemin = os.path.join(TEXTES, slug + ".md")
+    if not os.path.exists(chemin):
+        return None
+    texte = typographie(open(chemin, encoding="utf-8").read().strip(),
+                        reparer_parentheses=False)
+    images.update(re.findall(r"/assets/images/archive/([^)]+)", texte))
+    return texte
 
 
 def lire_archive(nom):
@@ -697,9 +728,10 @@ def main():
             "rubrique": rubrique, "ordre": compteur[rubrique],
         })
         ecrire(os.path.join(CONTENU, "pages", fichier + ".md"), champs,
-               convertir(lire_archive(source), images, titre,
-                         paragraphes_corriges(CORRECTIONS[fichier])
-                         if fichier in CORRECTIONS else None))
+               texte_fourni(fichier, images)
+               or convertir(lire_archive(source), images, titre,
+                            paragraphes_corriges(CORRECTIONS[fichier])
+                            if fichier in CORRECTIONS else None))
 
     for fichier, titre, source in ANNEXES:
         chapeau, _ = ACCOMPAGNEMENT.get(fichier, ("", ""))
