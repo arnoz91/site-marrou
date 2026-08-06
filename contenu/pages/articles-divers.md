@@ -78,7 +78,7 @@ Christianisme et Renouveau. Journées universitaires régionales de Lyon, Pâqu
 
 **En terre d’Islam**, troisième trimestre 1943 : « La Musique selon l’Islam. »
 
-**Esprit** Critique musicale 1935-1972 (signature : Henri Davenson) (voir pdf)
+**Esprit** [Critique musicale 1935-1972](/assets/documents/davenson-critique-musicale-esprit.pdf) (signature : Henri Davenson)
 
 N°3 de mars 1940 : Compte rendu-commentaire de : Robert Delavignette, *Les vrais chefs de l’Empire* (p. 436-439 signé Henri Davenson).
 

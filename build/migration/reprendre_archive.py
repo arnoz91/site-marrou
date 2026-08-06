@@ -304,6 +304,32 @@ def lien_propre(cible):
     return re.sub(r"^http://(?=(fr|en)\.wikipedia\.org)", "https://", cible)
 
 
+MARQUEUR_PDF = re.compile(r"[  ]*[\[(][  ]*voir (?:le )?pdf[  ]*[\])]", re.I)
+
+
+def reliens(texte, liens):
+    """Rétablit les renvois vers les documents joints, sans la mention.
+
+    L'ancien site signalait un PDF par un « (voir pdf) » posé à côté du lien.
+    Le lien porte l'information à lui seul, et la mention alourdissait des
+    listes déjà denses. Là où elle tenait lieu de ponctuation — « …janvier
+    1943 [voir pdf] Des résumés… » — on la remplace par un point.
+    """
+    for ancre, cible in liens:
+        ancre = typographie(ancre).strip()
+        if ancre and ancre in texte and f"]({cible})" not in texte:
+            texte = texte.replace(ancre, f"[{ancre}]({cible})", 1)
+
+    def coupe(m):
+        avant = texte[:m.start()].rstrip()
+        apres = texte[m.end():].lstrip()
+        if avant and apres and avant[-1] not in ".!?:;»…" and apres[0].isupper():
+            return "."
+        return ""
+
+    return MARQUEUR_PDF.sub(coupe, texte)
+
+
 def en_ligne(fragment, images):
     """Convertit le balisage de niveau caractère en Markdown."""
     def image(m):
@@ -528,8 +554,14 @@ def lire_archive(nom):
 
 
 def paragraphes_corriges(fichier_docx):
-    """Texte relu par l'association, un paragraphe par entrée."""
+    """Texte relu par l'association : (paragraphe, liens) pour chaque entrée.
+
+    Les liens sont ceux que porte le .docx lui-même. Sans eux, la relecture
+    ferait perdre les renvois vers les PDF : elle n'apporte que du texte, et
+    le texte remplace le bloc archivé, balisage compris.
+    """
     import docx
+    from docx.oxml.ns import qn
     chemin = os.path.join(RACINE, "SAHIM_Site Internet_Récupération")
     for forme in (fichier_docx, unicodedata.normalize("NFD", fichier_docx)):
         p = os.path.join(chemin, forme.replace("/", os.sep))
@@ -537,10 +569,27 @@ def paragraphes_corriges(fichier_docx):
             break
     else:
         return []
+    document = docx.Document(p)
     chrome = re.compile(r"^(vous êtes ici|haut du formulaire|bas du formulaire|recherche\s*:)", re.I)
-    return [unicodedata.normalize("NFC", par.text).strip()
-            for par in docx.Document(p).paragraphs
-            if par.text.strip() and not chrome.match(par.text.strip())]
+    sortie = []
+    for par in document.paragraphs:
+        texte = unicodedata.normalize("NFC", par.text).strip()
+        if not texte or chrome.match(texte):
+            continue
+        liens = []
+        for balise in par._p.findall(qn("w:hyperlink")):
+            rid = balise.get(qn("r:id"))
+            if not rid or rid not in document.part.rels:
+                continue
+            ancre = unicodedata.normalize("NFC", "".join(
+                n.text or "" for n in balise.iter(qn("w:t")))).strip()
+            cible = lien_propre(document.part.rels[rid].target_ref)
+            # Seuls les renvois vers un document joint sont repris ici : les
+            # liens internes sont déjà portés par le HTML archivé.
+            if ancre and cible.startswith("/assets/documents/"):
+                liens.append((ancre, cible))
+        sortie.append((texte, liens))
+    return sortie
 
 
 def appliquer_corrections(blocs, corriges):
@@ -558,7 +607,7 @@ def appliquer_corrections(blocs, corriges):
         t = re.sub(r"!?\[[^\]]*\]\([^)]*\)", "", t)
         return re.sub(r"[^\w]", "", t).lower()
 
-    nus = [nu(c) for c in corriges]
+    nus = [nu(texte) for texte, _ in corriges]
     sortie, depart = [], 0
     for bloc in blocs:
         if bloc.startswith("!["):
@@ -583,7 +632,7 @@ def appliquer_corrections(blocs, corriges):
             sortie.append(bloc)
             continue
 
-        remplacement = typographie(corriges[meilleur])
+        remplacement = typographie(corriges[meilleur][0])
 
         # Le .docx a perdu la mise en valeur du nom de revue en tête d'entrée
         # (elle était portée par un soulignement). On la replace : dans une
@@ -593,6 +642,7 @@ def appliquer_corrections(blocs, corriges):
         if amorce and remplacement.startswith(amorce.group(1)):
             n = len(amorce.group(1))
             remplacement = f"**{remplacement[:n]}**{remplacement[n:]}"
+        remplacement = reliens(remplacement, corriges[meilleur][1])
         # on conserve le balisage du bloc d'origine (titre, citation, puce)
         if titre:
             remplacement = "## " + re.sub(r"^[IVX]+\.\s*", "", remplacement)
