@@ -1,15 +1,11 @@
 # Configuration de l'interface d'administration.
-#
-# RESTE À COMPLÉTER : « base_url » ci-dessous, une fois le relais
-# d'authentification installé. Tant que ce n'est pas fait, l'interface
-# s'affiche mais la connexion échoue. Voir TUTORIEL_GITHUB.md, étape 3.
 
 backend:
   name: github
   repo: arnoz91/site-marrou
   branch: main
-  # Relais d'authentification : voir TUTORIEL_GITHUB.md, étape 3.
-  base_url: https://VOTRE-RELAIS.workers.dev
+  # Relais d'authentification (sveltia-cms-auth sur Cloudflare Workers).
+  base_url: https://sveltia-cms-auth.arnoz91800.workers.dev
 
 # Flux éditorial : les modifications passent par un état « en relecture »
 # avant publication. C'est ce qui distingue un membre d'un administrateur.
