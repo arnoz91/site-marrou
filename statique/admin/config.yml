@@ -15,8 +15,10 @@ backend:
 # avant publication. C'est ce qui distingue un membre d'un administrateur.
 publish_mode: editorial_workflow
 
-# Les images et PDF téléversés atterrissent ici.
-media_folder: site/assets/images
+# Les images et PDF téléversés atterrissent ici. Bien viser « statique/ » et
+# non « site/ » : site/ est reconstruit à chaque publication, un fichier
+# déposé là serait effacé au premier enregistrement suivant.
+media_folder: statique/assets/images
 public_folder: /assets/images
 
 locale: fr
@@ -44,14 +46,16 @@ collections:
       - name: rubrique
         label: Rubrique
         widget: select
+        # Ces valeurs sont les noms de fichiers de contenu/rubriques/ :
+        # en ajouter une ici sans créer la rubrique laisserait la page orpheline.
         options:
-          - { label: Découvrir, value: decouvrir }
-          - { label: L’historien, value: historien }
-          - { label: Penser et agir, value: penser-agir }
+          - { label: Vie et œuvre, value: vie-et-oeuvre }
+          - { label: L’Historien, value: historien }
+          - { label: Le théoricien de l’histoire, value: theoricien }
           - { label: Le musicologue, value: musicologue }
-          - { label: Ressources, value: ressources }
-          - { label: Cahiers Marrou, value: cahiers }
-          - { label: L’Association, value: association }
+          - { label: Le citoyen, value: citoyen }
+          - { label: Le chrétien, value: chretien }
+          - { label: Marrou après Marrou, value: apres-marrou }
       - { name: ordre, label: Position dans la rubrique, widget: number,
           value_type: int, min: 1, default: 1 }
       - { name: chapeau, label: Chapeau (phrase sous le titre), widget: text }
@@ -91,6 +95,26 @@ collections:
           options: [vie, colonne, livre, lyre, loupe, cahier, personnes] }
       - { name: body, label: Texte d’introduction (facultatif),
           widget: markdown, required: false }
+
+  # --- Annexes : les pages hors rubrique (association, contact…) -----------
+  - name: annexes
+    label: Pages annexes
+    label_singular: page annexe
+    folder: contenu/annexes
+    create: false          # ces quatre pages sont liées au pied de page
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: titre
+    summary: '{{titre}}'
+    fields:
+      - { name: titre, label: Titre de la page, widget: string }
+      - { name: chapeau, label: Chapeau (phrase sous le titre), widget: text }
+      - { name: description, label: Description pour les moteurs de recherche,
+          widget: text, required: false }
+      - { name: annexe, label: '', widget: hidden, default: true }
+      - { name: ordre, label: '', widget: hidden, default: 90 }
+      - { name: body, label: Texte de la page, widget: markdown }
 
   # --- Réglages ------------------------------------------------------------
   - name: reglages

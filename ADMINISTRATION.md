@@ -5,19 +5,24 @@ par vos comptes, je ne peux pas les exécuter à votre place.
 
 Comptez une heure la première fois. Ensuite, plus rien à faire.
 
+> **Vous n’avez jamais utilisé GitHub ?** Ce document est un résumé, utile
+> pour s’y retrouver ensuite. Pour la mise en place elle-même, suivez plutôt
+> [TUTORIEL_GITHUB.md](TUTORIEL_GITHUB.md), qui décrit chaque écran et chaque
+> bouton, sans rien supposer.
+
 ---
 
 ## Étape 1 — Créer le dépôt
 
 1. Créer un compte sur [github.com](https://github.com) si vous n’en avez pas.
    Gratuit, aucune carte bancaire.
-2. Créer un dépôt **privé ou public**, par exemple `site-marrou`.
-3. Depuis ce dossier, envoyer le projet :
+2. Créer un dépôt **public**, par exemple `site-marrou`. Avec l’offre
+   gratuite, GitHub Pages ne publie que depuis un dépôt public ; un dépôt
+   privé demanderait l’abonnement Pro, hors budget. Ce qui doit rester
+   confidentiel est déjà exclu par le `.gitignore`.
+3. Depuis ce dossier, envoyer le projet (le dépôt local existe déjà) :
 
 ```bash
-git init -b main
-git add .
-git commit -m "Site de la Société des amis d'Henri Irénée Marrou"
 git remote add origin https://github.com/VOTRE-COMPTE/site-marrou.git
 git push -u origin main
 ```
@@ -29,7 +34,9 @@ automatiquement à chaque publication.
 
 Dans le dépôt, **Settings → Pages → Source : GitHub Actions**.
 
-C’est tout. Au prochain envoi, le site se construit et se publie seul.
+L’envoi de l’étape 1 ayant eu lieu avant, relancer une fois le robot à la
+main : onglet **Actions → Construire et publier → Run workflow**. Ensuite le
+site se construit et se publie seul.
 L’adresse sera `https://VOTRE-COMPTE.github.io/site-marrou/`, en attendant le
 vrai nom de domaine.
 
@@ -44,9 +51,13 @@ demande un tout petit service intermédiaire, gratuit et à installer une fois.
 
 1. Créer un compte sur [Cloudflare](https://dash.cloudflare.com) (gratuit).
 2. Suivre les instructions de
-   [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) : c’est un
-   déploiement en un clic, puis la création d’une « OAuth App » côté GitHub.
-3. Reporter l’adresse obtenue (`https://…workers.dev`) dans
+   [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) : bouton
+   *Deploy to Cloudflare Workers*, puis création d’une « OAuth App » côté
+   GitHub dont l’*Authorization callback URL* est l’adresse du relais suivie
+   de `/callback`.
+3. Déclarer chez Cloudflare les variables `GITHUB_CLIENT_ID`,
+   `GITHUB_CLIENT_SECRET` (en *Secret*) et `ALLOWED_DOMAINS`.
+4. Reporter l’adresse obtenue (`https://…workers.dev`) dans
    `statique/admin/config.yml`, champ `base_url`.
 
 > Ces services évoluent : si les écrans ne correspondent plus exactement à la
