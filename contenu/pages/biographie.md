@@ -31,7 +31,7 @@ La tradition de ce groupe est d’inviter des sommités intellectuelles chrétie
 
 C’est alors aussi qu’il est introduit chez le musicologue Louis Laloy, proche de Debussy, qui fut secrétaire général de l’opéra ; son fils Jean, très bon pianiste et compositeur en herbe avant d’entrer dans la carrière diplomatique, de 10 ans plus jeune qu’Henri Marrou, deviendra un de ses très grands amis et lui fera partager son admiration pour le compositeur russe émigré Arthur Lourié.
 
-Cependant Marrou a très vivement conscience d’appartenir à une génération « décadente », celle de l’entre-deux guerres qui ne trouve pas, au-dessus d’elle, de véritables maîtres à penser (Péguy est mort prématurément en 1914) : d’où le succès, dans cette génération, du livre de Gibbon, Decline and Fall of the Roman Empire et de la notion spenglerienne de Dark Ages.)
+Cependant Marrou a très vivement conscience d’appartenir à une génération « décadente », celle de l’entre-deux guerres qui ne trouve pas, au-dessus d’elle, de véritables maîtres à penser (Péguy est mort prématurément en 1914) : d’où le succès, dans cette génération, du livre de Gibbon, _Decline and Fall of the Roman Empire_ et de la notion spenglerienne de _Dark Ages_.)
 
 En 1928, Henri Marrou, lors d’une excursion géographique à Grenoble, a rencontré une étudiante en histoire et géographie, Jeanne Bouchet, sa future femme. Cette année-là il soutient son « diplôme d’études supérieures » sur « La vie religieuse dans la cité gallo-romaine de Nîmes ». En 1929 il est reçu à l’agrégation d’histoire puis effectue son service militaire et devient officier d’administration. En deux ans il a aussi appris le grec.
 
