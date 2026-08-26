@@ -2,8 +2,8 @@
 titre: Biographie
 rubrique: vie-et-oeuvre
 ordre: 1
-chapeau: De Marseille à Rome, de Lyon à la Sorbonne, un itinéraire intellectuel, spirituel et citoyen.
-resume: De l’enfance marseillaise à l’Institut de France
+chapeau: Par Françoise Marrou Flamant
+resume: Par Françoise Marrou Flamant
 description: ''
 ---
 
