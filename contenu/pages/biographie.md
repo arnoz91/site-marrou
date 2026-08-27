@@ -91,13 +91,13 @@ Bien que très conscient de la sclérose des institutions universitaires qu’il
 
 ## La trop brève retraite d’Henri Marrou (1975-1977)
 
-Cette retraite s’annonçait heureuse et laborieuse, un peu plus paisible. En 1975, les amis et disciples d’Henri Marrou lui font l’hommage de Patristique et Humanisme, Mélanges (recueil d’articles), volume composé largement sous ses conseils et avec sa collaboration pour le choix des articles reproduits et pour la bibliographie.
+Cette retraite s’annonçait heureuse et laborieuse, un peu plus paisible. En 1975, les amis et disciples d’Henri Marrou lui font l’hommage de _Patristique et Humanisme, Mélanges_ (recueil d’articles), volume composé largement sous ses conseils et avec sa collaboration pour le choix des articles reproduits et pour la bibliographie.
 
-Mais tout s’assombrit avec la mort, le 9 janvier 1976, de Jeanne Marrou, dont la fragilité cardiaque préoccupait son mari depuis quelques années. Henri Marrou s’efforce de survivre à cette peine par un surcroît d’activités, de déplacements, de colloques. Il achève d’écrire son dernier livre, Décadence romaine ou Antiquité tardive ?
+Mais tout s’assombrit avec la mort, le 9 janvier 1976, de Jeanne Marrou, dont la fragilité cardiaque préoccupait son mari depuis quelques années. Henri Marrou s’efforce de survivre à cette peine par un surcroît d’activités, de déplacements, de colloques. Il achève d’écrire son dernier livre, _Décadence romaine ou Antiquité tardive ?_.
 
 À la rentrée d’octobre 1976, l’aînée de ses petits-enfants, Cécile Flamant, vient habiter auprès de lui et poursuivre ses études de droit à la Faculté de Sceaux – cohabitation réussie pour l’un comme pour l’autre. Mais Henri Marrou est hospitalisé d’urgence, opéré d’une occlusion intestinale, et son organisme épuisé ne survit que quelques jours, après avoir reçu le sacrement des malades de l’abbé Jean-Marie Lustiger, devenu quelques années auparavant son directeur de conscience. Il meurt le 11 avril 1977.
 
-Deux livres posthumes d’Henri Marrou paraissent en 1978 : Christiana tempora. Mélanges d’histoire, d’archéologie, d’épigraphie et de patristique, et H.I. Marrou. Crise de notre temps et réflexion chrétienne (de 1930 à 1975), avec une introduction de Jean-Marie Mayeur, une préface de Charles Piétri, et le complément de nombreux témoignages.
+Deux livres posthumes d’Henri Marrou paraissent en 1978 : _Christiana tempora. Mélanges d’histoire, d’archéologie, d’épigraphie et de patristique_, et _H.I. Marrou. Crise de notre temps et réflexion chrétienne (de 1930 à 1975)_, avec une introduction de Jean-Marie Mayeur, une préface de Charles Piétri, et le complément de nombreux témoignages.
 
 Un troisième livre, ses _Carnets posthumes_, est paru en 2006, édité par Françoise Marrou-Flamant, préfacé par le cardinal Jean-Marie Lustiger, analysé par Mgr Claude Dagens et présenté par Jacques Prévotat.
 
