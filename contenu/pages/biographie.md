@@ -101,4 +101,4 @@ Deux livres posthumes d’Henri Marrou paraissent en 1978 : _Christiana tempora
 
 Un troisième livre, ses _Carnets posthumes_, est paru en 2006, édité par Françoise Marrou-Flamant, préfacé par le cardinal Jean-Marie Lustiger, analysé par Mgr Claude Dagens et présenté par Jacques Prévotat.
 
-1 Cette courte biographie peut être utilement complétée par le livre de Pierre Riché, _Henri Irénée Marrou historien engagé_ (préfacé par René Rémond), Les Éditions du Cerf, Paris 2003.
+Cette courte biographie peut être utilement complétée par le livre de Pierre Riché, _Henri Irénée Marrou historien engagé_ (préfacé par René Rémond), Les Éditions du Cerf, Paris 2003.
