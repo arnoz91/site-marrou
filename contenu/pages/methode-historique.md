@@ -11,13 +11,13 @@ Très tôt, dans ses cours, articles et comptes rendus Henri Marrou s’est atta
 
 Sa pensée s’élabore de plus en plus largement à partir de 1939 dans :
 
-- Tristesse de l’historien (à propos de la thèse de doctorat de Raymond Aron). Esprit, avril 1939, p. 11-47.
-- Bergson et l’histoire, dans Henri Bergson, 2d. de la Baconnière, 1941, p. 213-221.
-- Qu’est-ce que l’histoire ? dans : Le Sens chrétien de l’histoire (coll. « Rencontres », 4) Lyon, 1942, p. 9-34.
-- L’Histoire et l’Education, discours prononcé à la séance solennelle de rentrée, Annales de l’Unversité de Lyon, L’Université de Lyon en 1941-1942, p. 26-36. Repris dans P. Riché, Henri Irénée Marrou historien engagé, Le Cerf, 2003, p. 360-368.
-- De la philosophie à l’histoire dans : Etienne Gilson (coll. « Rencontres », 30), Paris 1949, p. 71-86.
-- De la logique de l’histoire à une éthique de l’historien. Revue de Métaphysique et de Morale, 1949, p. 248-272.
-- Rapport sur : Histoire de la civilisation, I, Antiquité. Actes du X° Congrès international des Sciences historiques, I, Paris 1950, p. 235-340.
+- « Tristesse de l’historien » (à propos de la thèse de doctorat de Raymond Aron). _Esprit_, avril 1939, p. 11-47.
+- « Bergson et l’histoire », dans Henri Bergson, Éd. de la Baconnière, 1941, p. 213-221.
+- « Qu’est-ce que l’histoire ? », dans _Le Sens chrétien de l’histoire_, coll. Rencontres, n° 4, Lyon, 1942, p. 9-34.
+- « L’Histoire et l’Éducation », discours prononcé à la séance solennelle de rentrée, _Annales de l’Université de Lyon_, _L’Université de Lyon en 1941-1942_, p. 26-36. Repris dans P. Riché, _Henri-Irénée Marrou, historien engagé_, Le Cerf, 2003, p. 360-368.
+- « De la philosophie à l’histoire », dans _Étienne Gilson_, coll. Rencontres, n° 30, Paris, 1949, p. 71-86.
+- « De la logique de l’histoire à une éthique de l’historien », _Revue de Métaphysique et de Morale_, 1949, p. 248-272.
+- « Rapport sur : _Histoire de la civilisation_, I, Antiquité », dans _Actes du Xe Congrès international des sciences historiques_, I, Paris, 1950, p. 235-340.
 - D’une théorie de la civilisation à la théologie de l’histoire (sur l’œuvre d’Arnold J. Toynbee). Esprit, juillet 1952, p. 112-129.
 - Philosophie critique de l’histoire et « sens de l’histoire » dans : L’Homme et l’histoire, Actes du VI Congrès des Sociétés de Philosophie de langue française, Strasbourg, 1952, p. 3-10.
 - La Méthodologie historique : orientations actuelles, à propos d’ouvrages récents. Revue historique, juillet-septembre 1955, p. 256-270.
