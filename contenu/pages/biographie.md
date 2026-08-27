@@ -27,8 +27,6 @@ Dès son entrée à l’École, Henri Marrou y rencontre son aîné d’un an, P
 
 ![](/assets/images/archive/AvecDanielou.jpg)
 
-La tradition de ce groupe est d’inviter des sommités intellectuelles chrétiennes à s’adresser aux normaliens, Marrou y rencontre de jeunes « anciens » (Jean Guitton, le Père Jean Daniélou), il écoute le Père Teilhard de Chardin, s’entretient avec lui … À partir de ces expériences, sa foi chrétienne s’éclaire et se renforce, sa vocation d’historien se précise, en réaction à la fois contre la génération positiviste et contre l’étroitesse d’esprit d’un monde catholique effrayé par la modernité. La compatibilité essentielle de l’intelligence et de la foi devient pour lui une évidence - qui s’est quelque peu banalisée depuis lors, mais ce n’était pas du tout le cas dans les années 20-30.
-
 C’est alors aussi qu’il est introduit chez le musicologue Louis Laloy, proche de Debussy, qui fut secrétaire général de l’opéra ; son fils Jean, très bon pianiste et compositeur en herbe avant d’entrer dans la carrière diplomatique, de 10 ans plus jeune qu’Henri Marrou, deviendra un de ses très grands amis et lui fera partager son admiration pour le compositeur russe émigré Arthur Lourié.
 
 Cependant Marrou a très vivement conscience d’appartenir à une génération « décadente », celle de l’entre-deux guerres qui ne trouve pas, au-dessus d’elle, de véritables maîtres à penser (Péguy est mort prématurément en 1914) : d’où le succès, dans cette génération, du livre de Gibbon, _Decline and Fall of the Roman Empire_ et de la notion spenglerienne de _Dark Ages_.)
