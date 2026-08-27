@@ -27,10 +27,6 @@ _À Diognète_, Introduction, édition critique, traduction et commentaire, Coll
 
 _L’Ambivalence du temps de l’histoire chez saint Augustin_, Institut d’Etudes médiévales de Montréal et Librairie J. Vrin 1950.
 
-1950
-
-\*
-
 ![](/assets/images/archive/HistoireEducationAntiquite.jpg)
 
 _De la connaissance historique_, Éditions du Seuil, 1954.
