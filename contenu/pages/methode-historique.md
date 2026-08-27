@@ -38,12 +38,12 @@ Sa méthodologie historique est exposée dans le livre _De la connaissance histo
 10. L’histoire est utile car elle est connaissance de l’homme, récupération des valeurs culturelles dans l’art et la pensée ; loin de conduire au relativisme, l’histoire nous délivre du déterminisme historique.
 11. Conclusion : la fonction sociale de l’historien exige que la recherche aboutisse à une œuvre, à un livre ; l’historien se doit d’être un écrivain ; l’œuvre historique est une œuvre d’art. »
 
-Principales publications postérieures à De la connaissance historique :
+Principales publications postérieures à _De la connaissance historique_ :
 
-- La Foi historique. Les Etudes philosophiques, avril-juin 1959, p. 151-161.
-- Les limites aux apports de l’histoire, dans Encyclopédie française, t.XX (1959), Le Monde en devenir, p.20,18, 7-16.
-- Qu’est-ce que l’histoire ? dans : Ch. Samaran, L’Histoire et ses méthodes, I (Encyclopédie de la Pléiade, XI),1961, p. 1-33.
-- Comment comprendre le métier d’historien ? Même volume, p. 1465-1540.
-- Philologie et histoire dans la période du pontificat de Léon XIII, dans : Aspetti della cultura cattolica nell’età di Leone XIII, Roma, 1961, p. 71-106.
-- Troisième chronique de méthodologie historique. Revue historique, 1965, p. 139 -170.
-- Le métier d’historien depuis cent ans. Revue de l’Enseignement supérieur, 1969, p. 8-11.
+- « La Foi historique », _Les Études philosophiques_, avril-juin 1959, p. 151-161.
+- « Les limites aux apports de l’histoire », dans _Encyclopédie française_, t. XX (1959), _Le Monde en devenir_, p. 20, 18, 7-16.
+- « Qu’est-ce que l’histoire ? », dans Ch. Samaran, _L’Histoire et ses méthodes_, I, _Encyclopédie de la Pléiade_, XI, 1961, p. 1-33.
+- « Comment comprendre le métier d’historien ? », même volume, p. 1465-1540.
+- « Philologie et histoire dans la période du pontificat de Léon XIII », dans _Aspetti della cultura cattolica nell’età di Leone XIII_, Roma, 1961, p. 71-106.
+- « Troisième chronique de méthodologie historique », _Revue historique_, 1965, p. 139-170.
+- « Le métier d’historien depuis cent ans », _Revue de l’Enseignement supérieur_, 1969, p. 8-11.
