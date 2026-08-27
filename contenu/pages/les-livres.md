@@ -41,18 +41,18 @@ _Saint Augustin et l’Augustinisme_, Éditions du Seuil, collection « Maître
 
 Clément d’Alexandrie, _Le Pédagogue_, Introduction et notes, Collection Sources chrétiennes, n°70, 1960.
 
-Les Troubadours, Éditions du Seuil, « Le temps qui court », 1961.
+_Les Troubadours_, Éditions du Seuil, Le temps qui court, 1961.
 
-Théologie de l’histoire, Éditions du Seuil, 1968.
+_Théologie de l’histoire_, Éditions du Seuil, 1968.
 
-Nouvelle Histoire de l’Église, t. I, 2ème partie, De la persécution de Dioclétien à la mort de Grégoire le Grand (303-604), 1970.
+_Nouvelle Histoire de l’Église_, t. I, 2ème partie, De la persécution de Dioclétien à la mort de Grégoire le Grand (303-604), 1970.
 
-Patristique et Humanisme, Mélanges, Éditions du Seuil, Patristica Sorbonensia, 1976.
+_Patristique et Humanisme, Mélanges_, Éditions du Seuil, Patristica Sorbonensia, 1976.
 
-Décadence romaine ou antiquité tardive ? Éditions du Seuil, 1977.
+_Décadence romaine ou antiquité tardive ?_ Éditions du Seuil, 1977.
 
-Christiana Tempora, École française de Rome Palais Farnèse, 1978 (édition posthume).
+_Christiana Tempora_, École française de Rome Palais Farnèse, 1978 (édition posthume).
 
-Crise de notre temps et réflexion chrétienne (de 1930 à 1975), Éditions Beauchesne 1978 (édition posthume).
+_Crise de notre temps et réflexion chrétienne (de 1930 à 1975)_, Éditions Beauchesne 1978 (édition posthume).
 
-Carnets posthumes, Les Éditions du Cerf, 2006 (édition posthume).
+_Carnets posthumes_, Les Éditions du Cerf, 2006 (édition posthume).
