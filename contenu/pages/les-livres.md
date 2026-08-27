@@ -7,11 +7,9 @@ resume: L'œuvre de Marrou
 description: ''
 ---
 
-\*\*
-
 ![](/assets/images/archive/FondementCultureChretienne.jpg)
 
-Les livres (ici ne sont mentionnées que les dates des premières éditions)
+Ici ne sont mentionnées que les dates des premières éditions
 
 _Fondements d’une culture chrétienne_ (signé Henri Davenson) Cahiers de la nouvelle journée, fasc. n°27, Librairie Bloud et Gay, 1934.
 
