@@ -2,7 +2,7 @@
 titre: Biographie
 rubrique: vie-et-oeuvre
 ordre: 1
-chapeau: Par Françoise Marrou Flamant
+chapeau: Par Françoise Marrou-Flamant
 resume: Par Françoise Marrou Flamant
 description: ''
 ---
