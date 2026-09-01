@@ -1,10 +1,12 @@
 ---
-titre: "Pour l’honneur de la France"
-chapeau: "La dénonciation de la torture pendant la guerre d’Algérie."
-resume: "La dénonciation de la torture en Algérie."
-rubrique: "citoyen"
+titre: Pour l’honneur de la France
+rubrique: citoyen
 ordre: 2
+chapeau: La dénonciation de la torture pendant la guerre d’Algérie.
+resume: La dénonciation de la torture pendant la guerre d’Algérie.
+description: ''
 ---
+
 Après s’être opposé au régime de Vichy pendant la résistance, Henri Marrou prend position ouvertement contre la politique menée par le gouvernement français en Algérie dans le nouveau cadre de « l’Union française ». Il la dénonce dans Esprit en octobre 1948, il se joint au « Comité chrétien pour l’entente entre la France et l’Islam » fondé par Louis Massignon, il signe dans l’Express en 1953 l’« Appel des intellectuels pour la paix en Algérie » aux côtés de Mauriac, de Massignon, de Mandouze, et se voit stigmatisé dès lors par de nombreux collègues. Sa position se radicalise lorsque la répression va jusqu’à employer la torture – dont il avait déjà signalé, dans Esprit (juillet 1949) qu’elle était contraire aux Droits de l’homme. Dans Le Monde du 5 avril 1956 paraît l’article « France ma patrie » signé « Henri Marrou, professeur à la Sorbonne », il y dénonce les « moyens infects que sont les camps de concentration, la torture et la répression collective ». C’est la première prise de position publique sur le sujet (avec celle de Mgr Chappoulie l’évêque d’Angers) et son retentissement est considérable. Une enquête est diligentée contre Marrou, une perquisition a lieu à son domicile, le ministre de la Défense Nationale Bourgès-Maunoury ironise sur le désordre qu’elle a causé « dans les papiers du cher professeur ». Marrou est applaudi par ses étudiants, soutenu par une pétition de plusieurs collègues. Dans le même esprit, il publie, le 23 novembre 1956, au lendemain de l’expédition de Suez, l’article « France prends garde de perdre ton âme » dans Témoignage chrétien.
 
 Lorsqu’André Mandouze, latiniste, maître de conférences à Alger, est incupé d’« atteinte à la sûreté extérieure de l’Etat » (alors que l’Algérie est encore un département français) et incarcéré à la Santé, un comité pour sa défense se réunit dans les locaux d’Esprit, avec à sa tête François Mauriac, Louis Massignon et Henri Marrou. Celui-ci publie dans Témoignage chrétien (1er juin 1956) un article sur « La chasse aux sorcières ». A. Mandouze sera libéré.
