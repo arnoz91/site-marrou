@@ -7,7 +7,7 @@ resume: « Résistant à l’état pur »
 description: ''
 ---
 
-Henri Marrou définit dans ses Carnets posthumes, à la date du 15 août 1944, (p. 467-471) son « Attitude politique de 40 à 44 ». Quelques extraits de ces pages :
+Henri Marrou définit dans ses _Carnets posthumes_, à la date du 15 août 1944, (p. 467-471) son « attitude politique de 40 à 44 ». Quelques extraits de ces pages :
 
 « Je crois bien avoir été le Résistant à l’état pur […] Je me souviens, l’oreille tendue, […] écoutant dès le 2ème jour les premiers appels de De Gaulle à la BBC […] Je n’ai jamais accepté dans mon cœur la légitimité d’un armistice […] Pour moi la guerre n’a jamais été finie […] Toutes les initiatives nées à l’ombre de Vichy m’apparaissaient suspectes : les chantiers [de jeunesse], les Compagnons [de France], Uriage, Jeune France, l’armée de l’armistice […] Dès juillet-août [1940] Paulding nous offrait une chaire aux U.S. à Emmanuel [Mounier] et à moi : il nous aurait paru lâche d’accepter […] Au fond nous avons toujours cru que notre rôle était de combattre le front intérieur : front de résistance spirituelle à l’hitlérisme […] Je n’ai jamais oublié la terreur nazie (avant même qu’elle s’abattît sur nous), la torture et la persécution d’Israël […] »
 
