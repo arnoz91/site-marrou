@@ -1,9 +1,11 @@
 ---
-titre: "L’Association"
-chapeau: "Faire rayonner l’œuvre d’Henri-Irénée Marrou et favoriser l’étude de ses écrits."
+titre: L’Association
+chapeau: Faire rayonner l’œuvre d’Henri-Irénée Marrou et favoriser l’étude de ses écrits.
+description: ''
 annexe: true
 ordre: 90
 ---
+
 **L’Association** dite « Société des amis d’Henri Irénée Marrou (Davenson) » a été créée en 2007. Elle a pour but :
 
 de favoriser le rayonnement de sa pensée,
@@ -14,17 +16,17 @@ de susciter des travaux inspirés par son œuvre.
 
 Sa durée est illimitée.
 
-Elle a son siège à Paris, 3 rue Castex – 75004. e-mail : contact@henrimarrou.org
+Elle a son siège à Paris, 62 rue Rémy Dumoncel – 75014 Paris. e-mail : contact@henrimarrou.org
 
 **Le Conseil d’Administration** compte onze membres :
 
-Président : Jacques Prévotat
+Président : Benoît Pellistrandi
 
 Secrétaires : Nicole Moine et Claire Feuvrier-Prévotat
 
 Trésorière : Sabine Flamant
 
-Autres membres : Philippe Blaudeau, Claude Dagens, Janine Desmulliez, Fabien Guilloux, Françoise Marrou-Flamant, Benoît Pellistrandi, Jean-Marie Salamito.
+Autres membres : Philippe Blaudeau, Fabien Guilloux, Benoît Pellistrandi, Jean-Marie Salamito.
 
 **Son Comité d’honneur** est constitué de Messieurs et Mesdames
 
@@ -66,7 +68,7 @@ Geneviève Vidal-Naquet
 
 Michel Winock
 
-**Les adhérents **sont convoqués à l’Assemblée Générale annuelle qui se tient au mois d’octobre de l’année en cours, dans une salle aimablement allouée par l’École Normale Supérieure, 45 rue d’Ulm 75015 Paris.
+\*\*Les adhérents \*\*sont convoqués à l’Assemblée Générale annuelle qui se tient au mois d’octobre de l’année en cours, dans une salle aimablement allouée par l’École Normale Supérieure, 45 rue d’Ulm 75015 Paris.
 
 Les délibérations sont soumises aux votes des seuls adhérents ; elles sont suivies d’une conférence ouverte à tous publics.
 
@@ -87,7 +89,6 @@ Il évoque ensuite les activités de l’année 2010/2011, marquée par la diffu
 Durant l’année 2010-2011, la rubrique « Contact » de notre site Internet nous a mis en relation avec
 
 - notre collègue Rodrigo Ahumada-Duran, directeur de la Faculté d’histoire de l’Université de Santiago, très imprégné des pensées de Jacques Maritain et d’Henri Marrou. Il nous a transmis déjà deux longs articles signés de lui sur Henri Marrou et vient d’obtenir l’autorisation de présenter une thèse de doctorat sur son épistémologie. Il est heureux d’être considéré comme un « ambassadeur » de la pensée de Marrou au Chili, et plus largement dans les pays hispaniques. Il comprend et parle le français, mais ses articles sont en castillan. Il a séjourné un an chez les Dominicains de Toulouse, s’est entretenu avec Pierre Riché et avec René Mougel (le spécialiste de Maritain, gardien des archives de Jacques et Raïssa Maritain).
-
 - Fabien Guilloux, ofm, musicologue, depuis longtemps familier des livres et des articles musicologiques de Marrou. Par ailleurs il a découvert dans les Carnets posthumes tout un versant franciscain de la spiritualité de Marrou. Il est devenu adhérent de notre association. Nous lui devons une bibliographie complète des articles musicologiques de Marrou (principalement dans Esprit et dans Diapason), désormais disponible sur le site Internet. Il travaille à une anthologie des écrits musicologiques d’Henri Marrou-Davenson. Expert en traitement de texte, il nous a rendu le service de corriger et de mettre en forme le Cahier Marrou n°4. Il assurera la rédaction d’un prochain numéro des Études franciscaines consacré à Henri Marrou (contenant notamment un Traité d’esthétique franciscaine demeuré jusqu’ici inédit).
 
 Stephen Hulliger, le président de l’Association bâloise « Arthur Lourié Gesellschaft » (amie de notre Association) nous a annoncé la première exécution en concert, à Bâle, le 14 novembre 2011, d’une cantate retrouvée et jusqu’ici inconnue et inédite d’Arthur Lourié, Sibylla dicit : cette dernière œuvre de Lourié (1964) est dédiée à Henri Marrou.
