@@ -33,16 +33,6 @@ SITE_DIR = os.path.join(RACINE, "site")       # produit, jamais édité à la ma
 # ne sait pas exprimer et dont ce corpus a besoin.
 MD = MarkdownIt("commonmark", {"html": True, "linkify": False})
 
-ICONES = {
-    "vie": '<path d="M32 8v48M16 20l16-8 16 8M14 34c0 6 4 10 9 10s9-4 9-10M32 34c0 6 4 10 9 10s9-4 9-10M14 34l9-14 9 14M32 34l9-14 9 14"/>',
-    "colonne": '<path d="M12 54h40M17 50V25m10 25V25m10 25V25m10 25V25M10 20h44L32 8 10 20Z"/>',
-    "livre": '<path d="M8 13c9-3 17-1 24 5v36C25 48 17 46 8 49V13Zm48 0c-9-3-17-1-24 5v36c7-6 15-8 24-5V13Z"/>',
-    "lyre": '<path d="M24 11h16M21 17h22M24 17c0 9-8 13-8 24 0 9 7 14 16 14s16-5 16-14c0-11-8-15-8-24M27 29v17m5-20v22m5-19v17"/>',
-    "loupe": '<circle cx="28" cy="28" r="17"/><path d="m41 41 12 12M20 23h16M20 29h12M20 35h9"/>',
-    "cahier": '<path d="M14 9h31a5 5 0 0 1 5 5v41H19a5 5 0 0 1-5-5V9Zm5 0v46m9-35h14M28 28h14M28 36h10"/>',
-    "personnes": '<circle cx="24" cy="23" r="8"/><circle cx="43" cy="25" r="6"/><path d="M9 53c1-12 7-18 15-18s15 6 16 18m0-14c8-1 13 5 14 14"/>',
-}
-
 
 # --------------------------------------------------------------------------
 # Lecture du contenu
@@ -286,14 +276,6 @@ def document(ctx, slug, titre_onglet, description, corps, courant,
 # --------------------------------------------------------------------------
 def corps_accueil(ctx):
     accueil, site = ctx["accueil"], ctx["reglages"]
-    cartes = []
-    sommaire = [r for r in ctx["rubriques"] if r.get("sommaire", True)]
-    for i, rubrique in enumerate(sommaire, start=1):
-        cartes.append(f"""        <a href="{vers(rubrique['slug'], 'index')}">
-          <svg viewBox="0 0 64 64" aria-hidden="true">{ICONES.get(rubrique.get('icone'), '')}</svg>
-          <span><strong>{rubrique['nav']}</strong><small>{rubrique['resume']}</small></span><b>{i:02d}</b>
-        </a>""")
-
     liens = "".join(
         f'<a href="{vers(t["cible"], "index")}">{t["libelle"]}</a>'
         for t in site.get("transversaux", [])
@@ -316,10 +298,6 @@ def corps_accueil(ctx):
                  alt="Portrait photographique d’Henri-Irénée Marrou, en extérieur, coiffé d’une calotte." />
           </div>
         </div>
-
-        <nav class="portal__chapters" aria-label="Sommaire du site">
-{chr(10).join(cartes)}
-        </nav>
 
         <div class="portal__utility">
           <blockquote><p>« {accueil['citation']} »</p></blockquote>
@@ -500,8 +478,10 @@ def main():
            "rubriques": rubriques, "pages": pages, "annexes": annexes}
 
     # Reconstruction complète : site/ est jetable et entièrement reproductible.
+    # Sous Google Drive, les dossiers vidés peuvent survivre à rmtree : on
+    # tolère qu'ils existent encore (les fichiers, eux, sont bien supprimés).
     shutil.rmtree(SITE_DIR, ignore_errors=True)
-    shutil.copytree(STATIQUE, SITE_DIR)
+    shutil.copytree(STATIQUE, SITE_DIR, dirs_exist_ok=True)
 
     index = []
 

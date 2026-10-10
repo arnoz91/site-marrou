@@ -135,6 +135,12 @@ d’image. Sur une fenêtre large et courte — le cas normal une fois retirées
 barres du navigateur — cela faisait déborder l’accueil, d’autant plus que
 l’écran était large. En absolu, l’image ne pèse plus rien dans le calcul.
 
+**L’accueil n’a pas de grille de rubriques.** Une grille de cartes à
+pictogrammes reprenait sous le portrait les rubriques du menu ; sur ordinateur,
+le doublon sautait aux yeux, et elle a été retirée en octobre 2026. Le menu du
+haut est la seule navigation de l’accueil. Ne pas la rétablir sans retirer
+l’un des deux.
+
 **La barre de défilement occupe une place réservée en permanence**
 (`scrollbar-gutter: stable` sur `html`). L’accueil tient sur un écran, donc
 sans barre ; les pages intérieures en ont une. Sans cette réserve, les 15 px

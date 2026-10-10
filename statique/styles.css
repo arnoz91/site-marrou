@@ -295,49 +295,6 @@ cite { font-style: italic; }
   object-position: 50% 26%;
 }
 
-/* Sommaire des chapitres */
-.portal__chapters {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));  /* 6 rubriques = 2 rangées pleines */
-  border-bottom: 1px solid var(--filet);
-}
-
-.portal__chapters a {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.9rem;
-  padding: clamp(0.35rem, 1.25vh, 1.5rem) clamp(1.1rem, 1.8vw, 1.7rem);
-  text-decoration: none;
-  color: var(--encre);
-  border-right: 1px solid var(--filet);
-  border-bottom: 1px solid var(--filet);
-  transition: background-color .18s;
-}
-.portal__chapters a:hover { background: var(--ivoire-carte); }
-
-.portal__chapters svg {
-  flex: none;
-  width: clamp(1.4rem, min(1.9rem, 3.4vh), 1.9rem);
-  height: clamp(1.4rem, min(1.9rem, 3.4vh), 1.9rem);
-  fill: none; stroke: var(--mauve); stroke-width: 2.4;
-  stroke-linecap: round; stroke-linejoin: round;
-}
-.portal__chapters span { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
-.portal__chapters strong {
-  font-family: var(--serif); font-weight: 600;
-  font-size: clamp(1rem, min(1.2rem, 2.7vh), 1.2rem);
-  color: var(--bordeaux); line-height: 1.2;
-}
-.portal__chapters small {
-  color: var(--encre-douce); line-height: 1.35;
-  font-size: clamp(0.78rem, min(0.85rem, 2vh), 0.85rem);
-}
-.portal__chapters b {
-  margin-left: auto; align-self: flex-start;
-  font-family: var(--serif); font-weight: 500;
-  font-size: 0.95rem; color: var(--mauve-clair);
-}
-
 /* Bandeau citation + liens transversaux */
 .portal__utility {
   display: grid;
@@ -732,7 +689,7 @@ cite { font-style: italic; }
   body.page-accueil .portal {
     flex: 1 1 auto;
     display: grid;
-    grid-template-rows: minmax(min-content, 1fr) min-content min-content;
+    grid-template-rows: minmax(min-content, 1fr) min-content;
   }
   body.page-accueil .portal__portrait { min-height: 0; }
 }
@@ -774,8 +731,6 @@ cite { font-style: italic; }
   .portal__utility { grid-template-columns: minmax(0, 1fr); }
 
   .portal__utility > div { justify-content: flex-start; }
-
-  .portal__chapters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Faute de place à côté, le rail se dissout et ses deux blocs se replacent
@@ -808,8 +763,6 @@ cite { font-style: italic; }
   .nav-toggle { width: 2.5rem; }
   .search-button { width: 2.25rem; }
 
-  .portal__chapters { grid-template-columns: minmax(0, 1fr); }
-  .portal__chapters a { border-right: 0; }
   .cahiers-grid article { grid-template-columns: minmax(0, 1fr); }
   .cahier-cover { max-width: 9rem; }
   .chapter-timeline li { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
